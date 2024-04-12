@@ -46,6 +46,7 @@
     <Compile Include="Workings\Ingredients.cs" />
     <Compile Include="Workings\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Workings\Recipe.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
