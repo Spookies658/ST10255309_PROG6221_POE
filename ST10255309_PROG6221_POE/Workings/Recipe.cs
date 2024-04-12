@@ -26,7 +26,7 @@ namespace ST10255309_PROG6221_POE.Workings
 
         private void Create()
         {
-
+           
         }
 
         private void Delete()
@@ -41,7 +41,8 @@ namespace ST10255309_PROG6221_POE.Workings
 
         private void Exit()
         {
-            
+            Console.WriteLine("Thank you for using the Recipe Application");
+            System.Environment.Exit(0);
         }
     }
 }
