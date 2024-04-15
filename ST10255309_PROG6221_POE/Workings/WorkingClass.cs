@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,15 +10,15 @@ namespace ST10255309_PROG6221_POE.Workings
 {
     internal class WorkingClass
     {
-        ArrayList name = new ArrayList();
-        ArrayList ingredient = new ArrayList();
-        ArrayList ingredientName = new ArrayList();
-        ArrayList ingredientQuantity = new ArrayList();
-        ArrayList measurementUnit = new ArrayList();
-        ArrayList numberSteps = new ArrayList();
-        ArrayList stepDescription = new ArrayList();
+        
+        string recipeName;
+        string[] ingredientName;
+        double[] ingredientQuantity;
+        string[] measurementUnit;
+        int[] numberSteps;
+        string[] stepDescription;
 
-        private string recipeName;
+
         private int ingredientNumber;
         private string nameIngredient;
         private double quantityIngredient;
@@ -25,6 +26,7 @@ namespace ST10255309_PROG6221_POE.Workings
         private int stepsNumber;
         private string descriptionStep;
         private string selection;
+        private string recipeChoice;
 
 
 
@@ -44,7 +46,6 @@ namespace ST10255309_PROG6221_POE.Workings
         {
             Console.WriteLine("Please enter the name of the recipe: ");
             recipeName = Console.ReadLine();
-            name.Add(recipeName);
             return recipeName;
         }
 
@@ -53,27 +54,27 @@ namespace ST10255309_PROG6221_POE.Workings
         { 
             Console.WriteLine("Please enter the number of ingredients: ");
             ingredientNumber = Convert.ToInt32(Console.ReadLine());
-            ingredient.Add(ingredientNumber);
             return ingredientNumber;
         }
 
         //Method to prompt user for the properties of the number of ingredients they entered and store them in the array.
         private void IngredientProperties()
         {
-            
+            ingredientName = new string[ingredientNumber];
+            ingredientQuantity = new double[ingredientNumber];
+            measurementUnit = new string[ingredientNumber];
             for (int i = 0; i < ingredientNumber; i++)
             {
                 Console.WriteLine("Please enter the name of the ingredient: ");
-                nameIngredient = Console.ReadLine();
-                ingredientName.Add(nameIngredient);
 
+                ingredientName[i] = Console.ReadLine();
+                
+                
                 Console.WriteLine("Please enter the quantity of the ingredient: ");
-                quantityIngredient = Convert.ToDouble(Console.ReadLine());
-                ingredientQuantity.Add(quantityIngredient);
+                ingredientQuantity[i] = Convert.ToDouble(Console.ReadLine());
 
                 Console.WriteLine("Please enter the unit of measurement: ");
-                unitMeasurement = Console.ReadLine();
-                measurementUnit.Add(unitMeasurement);
+                measurementUnit[i] = Console.ReadLine();
             }
         }
 
@@ -82,18 +83,17 @@ namespace ST10255309_PROG6221_POE.Workings
         {
             Console.WriteLine("Please enter the number of steps: ");
             stepsNumber = Convert.ToInt32(Console.ReadLine());
-            numberSteps.Add(stepsNumber);
             return stepsNumber;
         }
 
         //Method to prompt user for the description of the steps and store it in the array.
         private void StepDescription()
         {
+            stepDescription = new string[stepsNumber];
             for (int i = 0; i < stepsNumber; i++)
             {
                 Console.WriteLine("Please enter the description of the step: ");
-                descriptionStep = Console.ReadLine();
-                stepDescription.Add(descriptionStep);
+                stepDescription[i] = Console.ReadLine();
             }
         }
 
@@ -101,7 +101,7 @@ namespace ST10255309_PROG6221_POE.Workings
         private void Views()
         {
             
-            Console.WriteLine("\n\nRecipe: " + name[0]);
+            Console.WriteLine("\n\nRecipe name: " + recipeName);
             Console.WriteLine("Ingredients: ");
             for (int i = 0; i < ingredientNumber; i++)
             {
@@ -127,33 +127,21 @@ namespace ST10255309_PROG6221_POE.Workings
             {
                 for (int i = 0; i < ingredientNumber; i++)
                 {
-                    ingredientQuantity[i] = Convert.ToDouble(ingredientQuantity[i]) * 0.5;
-                    Console.WriteLine("Name: " + name[0] + "\n" +
-                                      "Ingredients: " + ingredientName[i] + " " + ingredientQuantity[i] + " " + measurementUnit[i] + "\n" +
-                                      "Steps: " + "\n" +
-                                      stepDescription[i] + "\n");
+                    ingredientQuantity[i] *= 0.5; 
                 }
             }
             else if(selection == "2")
             {
                 for (int i = 0; i < ingredientNumber; i++)
                 {
-                    ingredientQuantity[i] = Convert.ToDouble(ingredientQuantity[i]) * 2;
-                    Console.WriteLine("Name: " + name[0] + "\n" +
-                                      "Ingredients: " + ingredientName[i] + " " + ingredientQuantity[i] + " " + measurementUnit[i] + "\n" +
-                                      "Steps: " + "\n" +
-                                      stepDescription[i] + "\n");
+                    ingredientQuantity[i] *= 2;
                 }
             }
             else if(selection == "3")
             {
                 for (int i = 0; i < ingredientNumber; i++)
                 {
-                    ingredientQuantity[i] = Convert.ToDouble(ingredientQuantity[i]) * 3;
-                    Console.WriteLine("Name: " + name[0] + "\n" +
-                                      "Ingredients: " + ingredientName[i] + " " + ingredientQuantity[i] + " " + measurementUnit[i] + "\n" +
-                                      "Steps: " + "\n" +
-                                      stepDescription[i] + "\n");
+                    ingredientQuantity[i] *= 3;
                 }
             }
             else if(selection == "4")
@@ -165,7 +153,18 @@ namespace ST10255309_PROG6221_POE.Workings
                 Console.WriteLine("Invalid input, please try again\n");   
             }
 
-
+            Console.WriteLine("\n\nRecipe name: " + recipeName);
+            Console.WriteLine("Ingredients: ");
+            for (int i = 0; i < ingredientNumber; i++)
+            {
+                Console.WriteLine(ingredientName[i] + " " + ingredientQuantity[i] + " " + measurementUnit[i]);
+            }
+            Console.WriteLine("Steps: ");
+            for (int i = 0; i < stepsNumber; i++)
+            {
+                Console.WriteLine(stepDescription[i]);
+            }
         }
+
     }
 }
