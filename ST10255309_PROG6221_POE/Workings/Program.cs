@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ST10255309_PROG6221_POE.Workings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace ST10255309_PROG6221_POE
     {
         static void Main(string[] args)
         {
-
+            Recipe r = new Recipe();
+            r.Menu();
         }
     }
 }
