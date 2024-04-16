@@ -9,18 +9,29 @@ namespace ST10255309_PROG6221_POE.Workings
     internal class Ingredients
     {
 
+        private string name;
         private int ingredient;
         private string ingredientName;
         private double ingredientQuantity;
         private string measurementUnit;
+        private int numberSteps;
+        private string stepDescription;
 
         //Creating getters and setters for the user input
-        public Ingredients(int ingredient, string ingredientName, double ingredientQuantity, string measurementUnit)
+        public Ingredients(string name, int ingredient, string ingredientName, double ingredientQuantity, string measurementUnit, int numberSteps, string stepDescription)
         {
+            this.name = name;
             this.ingredient = ingredient;
             this.ingredientName = ingredientName;
             this.ingredientQuantity = ingredientQuantity;
             this.measurementUnit = measurementUnit;
+            this.numberSteps = numberSteps;
+            this.stepDescription = stepDescription;
+        }
+
+        public string getName()
+        {
+            return name;
         }
 
         public int getIngredient()
@@ -43,6 +54,20 @@ namespace ST10255309_PROG6221_POE.Workings
             return measurementUnit;
         }
 
+        public int getNumberSteps()
+        {
+            return numberSteps;
+        }
+
+        public string getStepDescription()
+        {
+            return stepDescription;
+        }
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+
         public void setIngredient(int ingredient)
         {
             this.ingredient = ingredient;
@@ -61,6 +86,16 @@ namespace ST10255309_PROG6221_POE.Workings
         public void setMeasurementUnit(string measurementUnit)
         {
             this.measurementUnit = measurementUnit;
+        }
+
+        public void setNumberSteps(int numberSteps)
+        {
+            this.numberSteps = numberSteps;
+        }
+
+        public void setStepDescription(string stepDescription)
+        {
+            this.stepDescription = stepDescription;
         }
     }
 }
