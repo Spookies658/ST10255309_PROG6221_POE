@@ -26,8 +26,6 @@ namespace ST10255309_PROG6221_POE.Workings
         private string choice;
         
 
-
-
         public void userRecp()
         {
             NamesOfRecipe();
@@ -195,46 +193,43 @@ namespace ST10255309_PROG6221_POE.Workings
 
             //Method to prompt user if they would like to revert back to their original recipe.
 
-            if (selection == "1" || selection == "2" || selection == "3")
+            Console.WriteLine("Would you like to revert back to your original recipe? y/n");
+            changeBack = Console.ReadLine();
+            if (changeBack == "y")
             {
-                Console.WriteLine("Would you like to revert back to your original recipe? y/n");
-                changeBack = Console.ReadLine();
-                if(changeBack == "y")
+                if (selection == "1")
                 {
-                    if (selection == "1")
+                    for (int i = 0; i < ingredientNumber; i++)
                     {
-                        for (int i = 0; i < ingredientNumber; i++)
-                        {
-                            ingredientQuantity[i] *= 2;
-                        }
+                        ingredientQuantity[i] *= 2;
                     }
-                    else if (selection == "2")
-                    {
-                        for (int i = 0; i < ingredientNumber; i++)
-                        {
-                            ingredientQuantity[i] *= 0.5;
-                        }
-                    }
-                    else if (selection == "3")
-                    {
-                        for (int i = 0; i < ingredientNumber; i++)
-                        {
-                            ingredientQuantity[i] /= 3;
-                        }
-                    }
-                    Views();
-                }else if (selection == "n")
+                }
+                else if (selection == "2")
                 {
+                    for (int i = 0; i < ingredientNumber; i++)
+                    {
+                        ingredientQuantity[i] *= 0.5;
+                    }
+                }
+                else if (selection == "3")
+                {
+                    for (int i = 0; i < ingredientNumber; i++)
+                    {
+                        ingredientQuantity[i] /= 3;
+                    }
+                }
+                Views();
+            } else if (selection == "n")
+              {
                     Console.WriteLine("No additional changes made\n");
-                }
-                else
-                {
+              }else
+               {
                     Console.WriteLine("Invalid input, please try again");
-                }
+               }
                 
-            }
-
         }
+
+        
 
         private void Clear()
         {
