@@ -38,7 +38,10 @@ namespace ST10255309_PROG6221_POE.Workings
             ScalingFactor();
         }
 
-        
+        public void ClearRecipe()
+        {
+            Clear();
+        }
 
        
         //Method to prompt user for the name of the recipe and store it in the array.
@@ -231,10 +234,29 @@ namespace ST10255309_PROG6221_POE.Workings
             }
         }
         
+        // Method to prompt the user if they want to delete their recipe or not.
+        private void Clear()
+        {
+            Console.WriteLine("Would you like to clear the recipe? y/n");
+            choice = Console.ReadLine();
+            if (choice == "y")
+            {
+                Array.Clear(ingredientName, 0, ingredientName.Length);
+                Array.Clear(ingredientQuantity, 0, ingredientQuantity.Length);
+                Array.Clear(measurementUnit, 0, measurementUnit.Length);
+                Array.Clear(stepDescription, 0, stepDescription.Length);
 
-        
-
-       
+                Console.WriteLine("Recipe cleared\n");
+            }
+            else if (choice == "n")
+            {
+                Console.WriteLine("Your recipe has not been deleted\n");  
+            }
+            else
+            {
+                Console.WriteLine("Invalid input, please try again");
+            }
+        }
    
 
     }
