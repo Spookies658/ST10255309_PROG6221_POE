@@ -11,18 +11,20 @@ namespace ST10255309_PROG6221_POE.Workings
     internal class WorkingClass
     {
         
-        string recipeName;
-        string[] ingredientName;
-        double[] ingredientQuantity;
-        string[] measurementUnit;
-        string[] stepDescription;
+        private string recipeName;
+        private string[] ingredientName;
+        private double[] ingredientQuantity;
+        private string[] measurementUnit;
+        private string[] stepDescription;
 
+        
 
         private int ingredientNumber;
         private int stepsNumber;
         private string selection;
         private string changeBack;
         private string choice;
+        
 
 
 
@@ -31,10 +33,16 @@ namespace ST10255309_PROG6221_POE.Workings
             NamesOfRecipe();
             NumberOfIngredients();
             IngredientProperties();
+            QuantityIngredients();
             OrderSteps();
             StepDescription();
             Views();
             ScalingFactor();
+        }
+
+        public void ClearRecipe()
+        {
+            Clear();
         }
 
        
@@ -48,31 +56,54 @@ namespace ST10255309_PROG6221_POE.Workings
 
         //Method to prompt user for the number of ingredients and store it in the array.
         private int NumberOfIngredients()
-        {  
+        { 
             Console.WriteLine("Please enter the number of ingredients: ");
-            ingredientNumber = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                ingredientNumber = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Invalid input, please enter a valid integer");
+                NumberOfIngredients();
+            }
             return ingredientNumber;
         }
 
         //Method to prompt user for the properties of the number of ingredients they entered and store them in the array.
         private void IngredientProperties()
         {
-            ingredientName = new string[ingredientNumber];
-            ingredientQuantity = new double[ingredientNumber];
+            ingredientName = new string [ingredientNumber];
+            
             measurementUnit = new string[ingredientNumber];
 
             for (int i = 0; i < ingredientNumber; i++)
             {
                 Console.WriteLine("Please enter the name of the ingredient: ");
-
                 ingredientName[i] = Console.ReadLine();
-                
-                
-                Console.WriteLine("Please enter the quantity of the ingredient: ");
-                ingredientQuantity[i] = Convert.ToDouble(Console.ReadLine());
 
                 Console.WriteLine("Please enter the unit of measurement: ");
                 measurementUnit[i] = Console.ReadLine();
+            }
+        }
+
+        private void QuantityIngredients()
+        {
+
+            ingredientQuantity = new double[ingredientNumber];
+
+            for (int i = 0; i < ingredientNumber; i++)
+            {
+                Console.WriteLine("Please enter the quantity of the ingredient: ");
+
+                try
+                {
+                    ingredientQuantity[i] = Convert.ToDouble(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Invalid input, please enter a valid number");
+                }
             }
         }
 
@@ -80,7 +111,15 @@ namespace ST10255309_PROG6221_POE.Workings
         private int OrderSteps()
         {
             Console.WriteLine("Please enter the number of steps: ");
-            stepsNumber = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+               stepsNumber = Convert.ToInt32(Console.ReadLine());
+            }catch (Exception e)
+            {
+                Console.WriteLine("Invalid input, please enter a valid integer");
+                OrderSteps();
+            }
+            
             return stepsNumber;
         }
 
@@ -111,7 +150,7 @@ namespace ST10255309_PROG6221_POE.Workings
             {
                 Console.WriteLine(stepDescription[i]);
             }
-       }
+        }
 
         //Method to prompt user if they would like to scale the recipe and by how much.
         private void ScalingFactor()
@@ -186,7 +225,7 @@ namespace ST10255309_PROG6221_POE.Workings
                     Views();
                 }else if (selection == "n")
                 {
-                    Console.WriteLine("No additional changes made");
+                    Console.WriteLine("No additional changes made\n");
                 }
                 else
                 {
@@ -195,6 +234,29 @@ namespace ST10255309_PROG6221_POE.Workings
                 
             }
 
+        }
+
+        private void Clear()
+        {
+            Console.WriteLine("Would you like to clear the recipe? y/n");
+            choice = Console.ReadLine();
+            if (choice == "y")
+            {
+                recipeName = null;
+                ingredientName = null;
+                ingredientQuantity = null;
+                measurementUnit = null;
+                stepDescription = null;
+                Console.WriteLine("Recipe cleared\n");
+            }
+            else if (choice == "n")
+            {
+                Console.WriteLine("Your recipe has not been deleted\n");  
+            }
+            else
+            {
+                Console.WriteLine("Invalid input, please try again");
+            }
         }
    
 
