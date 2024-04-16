@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,35 +11,49 @@ namespace ST10255309_PROG6221_POE.Workings
     internal class Recipe
     {
 
-        public void Recepe()
+        string option;
+
+        //A method to display a menu popup to the user
+        public void Menu()
         {
-            Menu();
-            Create();
-            Delete();
-            View();
-            Exit();
+            Console.WriteLine("Please select an option from the menu below: \n\n1. Create Recipe\n2. Delete Recipe\n3. Exit");
+            option = Console.ReadLine();
+            if (option == "1")
+            {
+                Create();
+            }
+            else if (option == "2")
+            {
+                Delete();
+            }
+            else if (option == "3")
+            {
+                Exit();
+            }
+            else
+            {
+                Console.WriteLine("Invalid input, please try again");
+                Menu();
+            }
         }
 
-        private void Menu()
-        {
-            Console.WriteLine("Please select an option from the menu below: \n\n1. Create Recipe\n2. View Recipe\n3. Delete Recipe\nExit");
-        }
-
+        //userRecap is called from the WorkingClass so that the user can create a recipe
         private void Create()
         {
-           
+            WorkingClass workings = new WorkingClass();
+            workings.userRecp();
+            Menu();
         }
 
+        //ClearRecipe is called from the WorkingClass so that the user can delete a recipe
         private void Delete()
         {
-
+            WorkingClass workings = new WorkingClass();
+            workings.ClearRecipe();
+            Menu();
         }
 
-        private void View()
-        {
-
-        }
-
+        //Method to exit the application
         private void Exit()
         {
             Console.WriteLine("Thank you for using the Recipe Application");
