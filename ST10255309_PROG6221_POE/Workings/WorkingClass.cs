@@ -154,7 +154,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //Method to prompt user if they would like to scale the recipe and by how much.
         private void ScalingFactor()
         {
-            Console.WriteLine("\nIf Scaling is required select one of the following:\n " +
+            Console.WriteLine("\nIf Scaling is required select one of the following:\n" +
                               "1. Scale by half\n" +
                               "2. Scale by 2 times\n" +
                               "3.Scale by 3 times\n" +
