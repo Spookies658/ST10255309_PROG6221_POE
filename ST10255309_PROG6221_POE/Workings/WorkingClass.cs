@@ -15,18 +15,14 @@ namespace ST10255309_PROG6221_POE.Workings
         string[] ingredientName;
         double[] ingredientQuantity;
         string[] measurementUnit;
-        int[] numberSteps;
         string[] stepDescription;
 
 
         private int ingredientNumber;
-        private string nameIngredient;
-        private double quantityIngredient;
-        private string unitMeasurement;
         private int stepsNumber;
-        private string descriptionStep;
         private string selection;
-        private string recipeChoice;
+        private string changeBack;
+        private string choice;
 
 
 
@@ -41,6 +37,7 @@ namespace ST10255309_PROG6221_POE.Workings
             ScalingFactor();
         }
 
+       
         //Method to prompt user for the name of the recipe and store it in the array.
         private string NamesOfRecipe()
         {
@@ -51,7 +48,7 @@ namespace ST10255309_PROG6221_POE.Workings
 
         //Method to prompt user for the number of ingredients and store it in the array.
         private int NumberOfIngredients()
-        { 
+        {  
             Console.WriteLine("Please enter the number of ingredients: ");
             ingredientNumber = Convert.ToInt32(Console.ReadLine());
             return ingredientNumber;
@@ -63,6 +60,7 @@ namespace ST10255309_PROG6221_POE.Workings
             ingredientName = new string[ingredientNumber];
             ingredientQuantity = new double[ingredientNumber];
             measurementUnit = new string[ingredientNumber];
+
             for (int i = 0; i < ingredientNumber; i++)
             {
                 Console.WriteLine("Please enter the name of the ingredient: ");
@@ -90,6 +88,7 @@ namespace ST10255309_PROG6221_POE.Workings
         private void StepDescription()
         {
             stepDescription = new string[stepsNumber];
+
             for (int i = 0; i < stepsNumber; i++)
             {
                 Console.WriteLine("Please enter the description of the step: ");
@@ -153,18 +152,51 @@ namespace ST10255309_PROG6221_POE.Workings
                 Console.WriteLine("Invalid input, please try again\n");   
             }
 
-            Console.WriteLine("\n\nRecipe name: " + recipeName);
-            Console.WriteLine("Ingredients: ");
-            for (int i = 0; i < ingredientNumber; i++)
+            Views();
+
+            //Method to prompt user if they would like to revert back to their original recipe.
+
+            if (selection == "1" || selection == "2" || selection == "3")
             {
-                Console.WriteLine(ingredientName[i] + " " + ingredientQuantity[i] + " " + measurementUnit[i]);
+                Console.WriteLine("Would you like to revert back to your original recipe? y/n");
+                changeBack = Console.ReadLine();
+                if(changeBack == "y")
+                {
+                    if (selection == "1")
+                    {
+                        for (int i = 0; i < ingredientNumber; i++)
+                        {
+                            ingredientQuantity[i] *= 2;
+                        }
+                    }
+                    else if (selection == "2")
+                    {
+                        for (int i = 0; i < ingredientNumber; i++)
+                        {
+                            ingredientQuantity[i] *= 0.5;
+                        }
+                    }
+                    else if (selection == "3")
+                    {
+                        for (int i = 0; i < ingredientNumber; i++)
+                        {
+                            ingredientQuantity[i] /= 3;
+                        }
+                    }
+                    Views();
+                }else if (selection == "n")
+                {
+                    Console.WriteLine("No additional changes made");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, please try again");
+                }
+                
             }
-            Console.WriteLine("Steps: ");
-            for (int i = 0; i < stepsNumber; i++)
-            {
-                Console.WriteLine(stepDescription[i]);
-            }
+
         }
+   
 
     }
 }
