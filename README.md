@@ -5,14 +5,21 @@ Download Visual Studios 2022.
 If you recieve the code via zip file: Once the file containing the code is received, unzip it.
 Once unzipped, open the file.
 
-Or you can access the github repository at: 
+Or you can access the github repository at: https://github.com/Spookies658/ST10255309_PROG6221_POE/tree/13e17893546399a24cf489c47eb54911b1f60179/ST10255309_PROG6221_POE 
+To access it on Visual Studios 2022, clone the repository to your local machine using: git clone
 
 Launch Visual Studios 2022.
-Once launched select Open project/solution.
-Choose ST10255309_PROG6221_POE file.
-This should open the file on Visual Studios 2022. Once opened, left click on the start button which is located in the middle of the top taskbar. It has a green arrow next to it.
+Compile the code on the application using a Console .NET application.
+This should open the file on Visual Studios 2022.
+Once opened, left click on the start button which is located in the middle of the top taskbar. It has a green arrow next to it.
 This should run the application.
 Once the application is running, interact with it to create your recipe.
+
+Once running, if "1" is entered, the application will allow you to enter a new recipe. It will prompt you for its name, number of ingredients, ingredient properties, number of steps and the step contents.
+Once this is completed you have an option to scale your recipes ingredient quantities. You can revert back to the recipes original quantity.
+
+If "2" is selected, the application will prompt you to either delete your created recipe or not. 
+
 An option is provided to exit the application once you wish to exit.
 
 References:
