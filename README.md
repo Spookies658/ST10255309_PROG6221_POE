@@ -1,8 +1,12 @@
 Sanele’s Recipe application
 
 Download Visual Studios 2022.
-Once the file containing the code is received, unzip it.
+
+If you recieve the code via zip file: Once the file containing the code is received, unzip it.
 Once unzipped, open the file.
+
+Or you can access the github repository at: 
+
 Launch Visual Studios 2022.
 Once launched select Open project/solution.
 Choose ST10255309_PROG6221_POE file.
