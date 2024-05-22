@@ -22,26 +22,31 @@ namespace ST10255309_PROG6221_POE.Workings
     internal class WorkingClass
     {
         
-        //Creating arrays and initializing them
-        private string recipeName;
-        private string[] ingredientName = new string[5];
-        private double[] ingredientQuantity = new double[5];
-        private string[] measurementUnit = new string[5];
-        private string[] stepDescription = new string[5];
-        
+        //Creating arraylists and initializing them
+        List<string> recipeName = new List<string>();
+        List<string> ingredientName = new List<string>();
+        List<double> ingredientQuantity = new List<double>();
+        List<string> measurementUnit = new List<string>();
+        List<string> stepDescription = new List<string>();
 
+        private string name;
         private int ingredientNumber;
+        private string nameOfIngredient;
+        private string quantity;
         private int stepsNumber;
+        private string description;
         private string selection;
         private string changeBack;
         private string choice;
         
         
+
         public void userRecp()
         {
             NamesOfRecipe();
             NumberOfIngredients();
-            IngredientProperties();
+            IngredientPropertiesName();
+            IngredientPropertiesMeasurement();
             QuantityIngredients();
             OrderSteps();
             StepDescription();
@@ -54,14 +59,27 @@ namespace ST10255309_PROG6221_POE.Workings
             Clear();
         }
 
+        //------------------------------------------------Start of Methods-------------------------------------------------------
        
         //Method to prompt user for the name of the recipe and store it in the array.
         private string NamesOfRecipe()
         {
             Console.WriteLine("Please enter the name of the recipe: ");
-            recipeName = Console.ReadLine();
-            return recipeName;
+            name = Console.ReadLine();
+            if (name != null)
+            {
+                recipeName.Add(name);
+            }
+            else {      
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                Console.ResetColor();
+                NamesOfRecipe();
+            }
+           return name;
         }
+
+        //-----------------------------------------------------------------------------------------------------------------------
 
         //Method to prompt user for the number of ingredients and store it in the array.
         private int NumberOfIngredients()
@@ -73,49 +91,84 @@ namespace ST10255309_PROG6221_POE.Workings
             }
             catch (Exception e)
             {
-                Console.WriteLine("Invalid input, please enter a valid integer");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input, please enter a valid integer", Console.ForegroundColor);
+                Console.ResetColor();
                 NumberOfIngredients();
             }
             return ingredientNumber;
         }
 
-        //Method to prompt user for the ingredient name and measurement unit of the number of ingredients they entered and store them in the array.
-        private void IngredientProperties()
-        {
-            ingredientName = new string [ingredientNumber];
-            
-            measurementUnit = new string[ingredientNumber];
+        //-----------------------------------------------------------------------------------------------------------------------
 
+        //Method to prompt user for the ingredient name and measurement unit of the number of ingredients they entered and store them in the array.
+        private void IngredientPropertiesName()
+        {
             for (int i = 0; i < ingredientNumber; i++)
             {
                 Console.WriteLine("Please enter the name of the ingredient: ");
-                ingredientName[i] = Console.ReadLine();
-
-                Console.WriteLine("Please enter the unit of measurement: ");
-                measurementUnit[i] = Console.ReadLine();
+                nameOfIngredient = Console.ReadLine();
+                if(nameOfIngredient != null)
+                {
+                   ingredientName.Add(nameOfIngredient);
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                    Console.ResetColor();
+                    IngredientPropertiesName();
+                }
             }
         }
+
+        //-----------------------------------------------------------------------------------------------------------------------
+
+        //Method to prompt user for the measurement unit of the ingredients and store it in the array.
+        private void IngredientPropertiesMeasurement()
+        {
+            for (int i = 0; i < ingredientNumber; i++)
+            {
+                Console.WriteLine("Please enter the measurement unit of the ingredient: ");
+                quantity = Console.ReadLine();
+                if (quantity != null)
+                {
+                    measurementUnit.Add(quantity);
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                    Console.ResetColor();
+                    IngredientPropertiesMeasurement();
+                }
+            }
+        }
+
+        //-----------------------------------------------------------------------------------------------------------------------
 
         //Method to prompt user for the quantity of the ingredients and store it in the array.
         private void QuantityIngredients()
         {
 
-            ingredientQuantity = new double[ingredientNumber];
-
             for (int i = 0; i < ingredientNumber; i++)
             {
                 Console.WriteLine("Please enter the quantity of the ingredient: ");
-
                 try
                 {
-                    ingredientQuantity[i] = Convert.ToDouble(Console.ReadLine());
+                    ingredientQuantity.Add(Convert.ToDouble(Console.ReadLine()));
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Invalid input, please enter a valid number");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid input, please enter a valid integer", Console.ForegroundColor);
+                    Console.ResetColor();
+                    QuantityIngredients();
                 }
             }
         }
+
+        //-----------------------------------------------------------------------------------------------------------------------
 
         //Method to prompt user for the number of steps and store it in the array.
         private int OrderSteps()
@@ -126,149 +179,171 @@ namespace ST10255309_PROG6221_POE.Workings
                stepsNumber = Convert.ToInt32(Console.ReadLine());
             }catch (Exception e)
             {
-                Console.WriteLine("Invalid input, please enter a valid integer");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input, please enter a valid integer", Console.ForegroundColor);
+                Console.ResetColor();
                 OrderSteps();
             }
             
             return stepsNumber;
         }
 
+        //-----------------------------------------------------------------------------------------------------------------------
+
         //Method to prompt user for the description of the steps and store it in the array.
         private void StepDescription()
         {
-            stepDescription = new string[stepsNumber];
-
-            for (int i = 0; i < stepsNumber; i++)
-            {
-                Console.WriteLine("Please enter the description of the step: ");
-                stepDescription[i] = Console.ReadLine();
-            }
+           for(int i = 0; i < stepsNumber; i++)
+           {
+               Console.WriteLine("Please enter the description of the step: ");
+               description= Console.ReadLine();
+               if(description != null)
+               {
+                   stepDescription.Add(Console.ReadLine());
+               }
+               else
+               {
+                   Console.ForegroundColor = ConsoleColor.Red;
+                   Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                   Console.ResetColor();
+                   StepDescription();
+               }
+           }
         }
+
+        //-----------------------------------------------------------------------------------------------------------------------
 
         //Method to display the recipe, ingredients and steps to the user.
         private void Views()
         {
+            for (int i = 0; i < recipeName.Count; i++)
+            {
+                Console.WriteLine("Recipe Name: " + recipeName[i]);
+            }
+            for (int i = 0; i < ingredientName.Count; i++)
+            {
+                Console.WriteLine("Ingredients: " + ingredientName[i]);
+            }
+            for (int i = 0; i < measurementUnit.Count; i++)
+            {
+                Console.WriteLine("Measurement Unit: " + measurementUnit[i]);
+            }
+            for (int i = 0; i < ingredientQuantity.Count; i++)
+            {
+                Console.WriteLine("Quantity: " + ingredientQuantity[i]);
+            }
+            for (int i = 0; i < stepDescription.Count; i++)
+            {
+                Console.WriteLine("Steps: " + stepDescription[i]); 
+            }
             
-            Console.WriteLine("\n\nRecipe name: " + recipeName);
-            Console.WriteLine("Ingredients: ");
-            for (int i = 0; i < ingredientNumber; i++)
-            {
-                Console.WriteLine(ingredientName[i] + " " + ingredientQuantity[i] + " " + measurementUnit[i]);
-            }
-            Console.WriteLine("Steps: ");
-            for (int i = 0; i < stepsNumber; i++)
-            {
-                Console.WriteLine(stepDescription[i]);
-            }
         }
 
-        //Method to prompt user if they would like to scale the recipe and by how much.
+        //-----------------------------------------------------------------------------------------------------------------------
+
+        //Method to prompt user if they would like to scale the recipe and by how much from the arraylist.
         private void ScalingFactor()
         {
-            Console.WriteLine("\nIf Scaling is required select one of the following:\n" +
+            Console.WriteLine("If you wish to scale or not, select one of the following options: \n" +
                               "1. Scale by half\n" +
                               "2. Scale by 2 times\n" +
-                              "3.Scale by 3 times\n" +
-                              "4. Not required\n");
+                              "3. Scale by 3 times\n" +
+                              "4. Not required");
             selection = Console.ReadLine();
             if (selection == "1")
             {
-                for (int i = 0; i < ingredientNumber; i++)
-                {
-                    ingredientQuantity[i] *= 0.5;
-                }
+                ingredientQuantity = ingredientQuantity.Select(x => x / 2).ToList();
             }
             else if (selection == "2")
             {
-                for (int i = 0; i < ingredientNumber; i++)
-                {
-                    ingredientQuantity[i] *= 2;
-                }
+                ingredientQuantity = ingredientQuantity.Select(x => x * 2).ToList();
             }
             else if (selection == "3")
             {
-                for (int i = 0; i < ingredientNumber; i++)
-                {
-                    ingredientQuantity[i] *= 3;
-                }
+               ingredientQuantity = ingredientQuantity.Select(x => x * 3).ToList();
             }
             else if (selection == "4")
             {
-                Console.WriteLine("No Scaling required\n");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("No changes made", Console.ForegroundColor);
+                Console.ResetColor();
             }
             else
             {
-                Console.WriteLine("Invalid input, please try again\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                Console.ResetColor();
+                ScalingFactor();
             }
-
             Views();
 
-            //Method to prompt user if they would like to revert back to their original recipe.
-            if (selection == "1" || selection == "2" || selection == "3")
-            {
-                Console.WriteLine("Would you like to revert back to your original recipe? y/n");
-                changeBack = Console.ReadLine();
-                if (changeBack == "y")
-                {
-                    if (selection == "1")
-                    {
-                        for (int i = 0; i < ingredientNumber; i++)
-                        {
-                            ingredientQuantity[i] *= 2;
-                        }
-                    }
-                    else if (selection == "2")
-                    {
-                        for (int i = 0; i < ingredientNumber; i++)
-                        {
-                            ingredientQuantity[i] *= 0.5;
-                        }
-                    }
-                    else if (selection == "3")
-                    {
-                        for (int i = 0; i < ingredientNumber; i++)
-                        {
-                            ingredientQuantity[i] /= 3;
-                        }
-                    }
-                    Views();
+            //-----------------------------------------------------------------------------------------------------------------------
 
-                }
-                else if (selection == "n")
+            //Method to prompt the user if they wish to scale the recipe back to its original state.
+            Console.WriteLine("Would you like to scale the recipe back to its original state? y/n");
+            changeBack = Console.ReadLine();
+            if (changeBack == "y")
+            {
+                if(selection=="1")
                 {
-                    Console.WriteLine("No additional changes made\n");
+                    ingredientQuantity = ingredientQuantity.Select(x => x * 2).ToList();
                 }
-                else
+                else if (selection == "2")
                 {
-                    Console.WriteLine("Invalid input, please try again");
+                    ingredientQuantity = ingredientQuantity.Select(x => x / 2).ToList();
                 }
+                else if (selection == "3")
+                {
+                    ingredientQuantity = ingredientQuantity.Select(x => x / 3).ToList();
+                }
+            }else if (changeBack == "n")
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Your recipe will remain scaled", Console.ForegroundColor);
+                Console.ResetColor();
+            }
+            else 
+            {                
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                Console.ResetColor();
             }
         }
+       
+        //-----------------------------------------------------------------------------------------------------------------------
         
         // Method to prompt the user if they want to delete their recipe or not.
         private void Clear()
         {
-            Console.WriteLine("Would you like to clear the recipe? y/n");
+            Console.WriteLine("Would you like to delete your recipe? y/n");
             choice = Console.ReadLine();
             if (choice == "y")
             {
-                Array.Clear(ingredientName, 0, ingredientName.Length);
-                Array.Clear(ingredientQuantity, 0, ingredientQuantity.Length);
-                Array.Clear(measurementUnit, 0, measurementUnit.Length);
-                Array.Clear(stepDescription, 0, stepDescription.Length);
-
-                Console.WriteLine("Recipe cleared\n");
+                recipeName.Clear();
+                ingredientName.Clear();
+                ingredientQuantity.Clear();
+                measurementUnit.Clear();
+                stepDescription.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Recipe cleared\n", Console.ForegroundColor);
+                Console.ResetColor();
             }
             else if (choice == "n")
             {
-                Console.WriteLine("Your recipe has not been deleted\n");  
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Your recipe has not been deleted\n", Console.ForegroundColor);
+                Console.ResetColor();
             }
             else
             {
-                Console.WriteLine("Invalid input, please try again");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                Console.ResetColor();
             }
         }
    
+        //---------------------------------------------End of methods---------------------------------------------------------------
 
     }
 }
+//----------------------------------------------------End of File-------------------------------------------------------------------
