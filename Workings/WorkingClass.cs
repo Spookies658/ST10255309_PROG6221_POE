@@ -13,11 +13,12 @@ namespace ST10255309_PROG6221_POE.Workings
      *ST10255309
      *Group2
      * References
-     * w3schools.2024. C# Try and Catch. [ONLINE] Available at: https://www.w3schools.com/cs/cs_exceptions.php. [Accessed 17 May 2021].
-     * codeacademy. 2023. .Clear. [ONLINE] Available at: https://www.codecademy.com/resources/docs/c-sharp/arrays/clear. [Accessed 17 May 2021].
+     * w3schools.2024. C# Try and Catch. [ONLINE] Available at: https://www.w3schools.com/cs/cs_exceptions.php. [Accessed 17 May 2024].
+     * codeacademy. 2023. .Clear. [ONLINE] Available at: https://www.codecademy.com/resources/docs/c-sharp/arrays/clear. [Accessed 17 May 2024].
      * Troeleson, A. Japikse, P. 2022. Pro C# 10 with .Net 6 Foundational Principals and Practices in Programming. Chamsbersburg, PA, USA.
-     * w3schools. 2024. C# The if else statement. [ONLINE] Available at: https://www.w3schools.com/cs/cs_conditions_elseif.php. [Accessed 17 May 2021].
-     * w3schools. 2024. C# Arrays. [ONLINE] Available at: https://www.w3schools.com/cs/cs_arrays.php. [Accessed 17 May 2021].
+     * w3schools. 2024. C# The if else statement. [ONLINE] Available at: https://www.w3schools.com/cs/cs_conditions_elseif.php. [Accessed 17 May 2024].
+     * geeksforgeeks. 2023. C# List Class. [ONLINE] Available at: https://www.geeksforgeeks.org/c-sharp-list-class/. [Accessed 23 May 2024].
+     * oreilly. 2024. Checking for null. [ONLINE] Available at:https://www.oreilly.com/library/view/c-71-and/9781788398077/daa9b00f-274a-4554-8287-4c303e9d2de3.xhtml#:~:text=If%20you%20are%20trying%20to,howManyLetters%20%3D%20authorName%3F. [Accessed 23 May 2024].
     */
     internal class WorkingClass
     {
@@ -62,7 +63,9 @@ namespace ST10255309_PROG6221_POE.Workings
         //Method to prompt user for the name of the recipe and store it in the array.
         private string NamesOfRecipe()
         {
-            Console.WriteLine("Please enter the name of the recipe: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Please enter the name of the recipe: ", Console.ForegroundColor);
+            Console.ResetColor();
             name = Console.ReadLine();
             if (name != null)
             {
@@ -82,7 +85,9 @@ namespace ST10255309_PROG6221_POE.Workings
         //Method to prompt user for the number of ingredients and store it in the array.
         private int NumberOfIngredients()
         { 
-            Console.WriteLine("Please enter the number of ingredients: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Please enter the number of ingredients: ", Console.ForegroundColor);
+            Console.ResetColor();
             try
             {
                 ingredientNumber = Convert.ToInt32(Console.ReadLine());
@@ -104,7 +109,9 @@ namespace ST10255309_PROG6221_POE.Workings
         {
             for (int i = 0; i < ingredientNumber; i++)
             {
-                Console.WriteLine("Please enter the name of the ingredient: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Please enter the name of the ingredient: ", Console.ForegroundColor);
+                Console.ResetColor();
                 nameOfIngredient = Console.ReadLine();
                 if(nameOfIngredient != null)
                 {
@@ -127,7 +134,9 @@ namespace ST10255309_PROG6221_POE.Workings
         {
             for (int i = 0; i < ingredientNumber; i++)
             {
-                Console.WriteLine("Please enter the measurement unit of the ingredient: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Please enter the measurement unit of the ingredient: ", Console.ForegroundColor);
+                Console.ResetColor();
                 quantity = Console.ReadLine();
                 if (quantity != null)
                 {
@@ -151,7 +160,9 @@ namespace ST10255309_PROG6221_POE.Workings
 
             for (int i = 0; i < ingredientNumber; i++)
             {
-                Console.WriteLine("Please enter the quantity of the ingredient: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Please enter the quantity of the ingredient: ", Console.ForegroundColor);
+                Console.ResetColor();
                 try
                 {
                     ingredientQuantity.Add(Convert.ToDouble(Console.ReadLine()));
@@ -171,7 +182,9 @@ namespace ST10255309_PROG6221_POE.Workings
         //Method to prompt user for the number of steps and store it in the array.
         private int OrderSteps()
         {
-            Console.WriteLine("Please enter the number of steps: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Please enter the number of steps: ", Console.ForegroundColor);
+            Console.ResetColor();
             try
             {
                stepsNumber = Convert.ToInt32(Console.ReadLine());
@@ -193,7 +206,9 @@ namespace ST10255309_PROG6221_POE.Workings
         {
            for(int i = 0; i < stepsNumber; i++)
            {
-               Console.WriteLine("Please enter the description of the step: ");
+               Console.ForegroundColor = ConsoleColor.Yellow;
+               Console.WriteLine("Please enter the description of the step: ", Console.ForegroundColor);
+               Console.ResetColor();
                description= Console.ReadLine();
                if(description != null)
                {
@@ -316,7 +331,9 @@ namespace ST10255309_PROG6221_POE.Workings
         // Method to prompt the user if they want to delete their recipe or not.
         private void Clear()
         {
-            Console.WriteLine("Would you like to delete your recipe? y/n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Would you like to delete your recipe? y/n", Console.ForegroundColor);
+            Console.ResetColor();
             choice = Console.ReadLine();
             if (choice == "y")
             {
