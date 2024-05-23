@@ -39,8 +39,6 @@ namespace ST10255309_PROG6221_POE.Workings
         private string changeBack;
         private string choice;
         
-        
-
         public void userRecp()
         {
             NamesOfRecipe();
@@ -307,7 +305,10 @@ namespace ST10255309_PROG6221_POE.Workings
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
                 Console.ResetColor();
+                Console.WriteLine("Would you like to scale the recipe back to its original state? y/n");
+                changeBack = Console.ReadLine();
             }
+            Views();
         }
        
         //-----------------------------------------------------------------------------------------------------------------------
