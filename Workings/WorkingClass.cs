@@ -29,6 +29,8 @@ namespace ST10255309_PROG6221_POE.Workings
         List<double> ingredientQuantity = new List<double>();
         List<string> measurementUnit = new List<string>();
         List<string> stepDescription = new List<string>();
+        List<double> calories = new List<double>();
+        List<string> group = new List<string>();
 
         private string name;
         private int ingredientNumber;
@@ -47,6 +49,8 @@ namespace ST10255309_PROG6221_POE.Workings
             IngredientPropertiesName();
             IngredientPropertiesMeasurement();
             QuantityIngredients();
+            Calories();
+            FoodGroup();
             OrderSteps();
             StepDescription();
             Views();
@@ -56,6 +60,16 @@ namespace ST10255309_PROG6221_POE.Workings
         public void ClearRecipe()
         {
             Clear();
+        }
+
+        public void DisplayAll()
+        {
+            AlphabeticOrder();
+        }
+
+        public void Search()
+        {
+            usrSearch();
         }
 
         //------------------------------------------------Start of Methods-------------------------------------------------------
@@ -179,6 +193,72 @@ namespace ST10255309_PROG6221_POE.Workings
 
         //-----------------------------------------------------------------------------------------------------------------------
 
+        //Method to prompt user for the calories of the ingredients and store it in the array.
+        private void Calories()
+        {
+            for (int i = 0; i < ingredientNumber; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Please enter the calories of the ingredient: ", Console.ForegroundColor);
+                Console.ResetColor();
+                try
+                {
+                    calories.Add(Convert.ToDouble(Console.ReadLine()));
+                }
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid input, please enter a valid integer", Console.ForegroundColor);
+                    Console.ResetColor();
+                    Calories();
+                }
+            }
+        }
+
+        //-----------------------------------------------------------------------------------------------------------------------
+
+        //Method to prompt user for the food group of the ingredients and store it in the array.
+        private void FoodGroup()
+        {
+            for (int i = 0; i < ingredientNumber; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Please select the food group for your ingredient: \n1. Starch\n2. Veg/Fruit\n3. Poultry\n4. Dairy\n5. Liquids", Console.ForegroundColor);
+                Console.ResetColor();
+                string option = Console.ReadLine();
+                if (option == "1")
+                {
+                    group.Add("Starch");
+                }
+                else if (option == "2")
+                {
+                    group.Add("Veg/Fruit");
+                }
+                else if (option == "3")
+                {
+                    group.Add("Poultry");
+                }
+                else if (option == "4")
+                {
+                    group.Add("Dairy");
+                }
+                else if (option == "5")
+                {
+                    group.Add("Liquids");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                    Console.ResetColor();
+                    FoodGroup();
+                }
+                
+            }
+        }
+
+        //-----------------------------------------------------------------------------------------------------------------------
+
         //Method to prompt user for the number of steps and store it in the array.
         private int OrderSteps()
         {
@@ -245,6 +325,14 @@ namespace ST10255309_PROG6221_POE.Workings
             {
                 Console.WriteLine("Quantity: " + ingredientQuantity[i]);
             }
+            for (int i = 0; i < calories.Count; i++)
+            {
+                Console.WriteLine("Calories: " + calories[i]);
+            }
+            for (int i = 0; i < group.Count; i++)
+            {
+                Console.WriteLine("Food Group: " + group[i]);
+            }
             for (int i = 0; i < stepDescription.Count; i++)
             {
                 Console.WriteLine("Steps: " + stepDescription[i]); 
@@ -293,30 +381,36 @@ namespace ST10255309_PROG6221_POE.Workings
             //-----------------------------------------------------------------------------------------------------------------------
 
             //Method to prompt the user if they wish to scale the recipe back to its original state.
-            Console.WriteLine("Would you like to scale the recipe back to its original state? y/n");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Would you like to scale the recipe back to its original state? y/n", Console.ForegroundColor);
+            Console.ResetColor();
             changeBack = Console.ReadLine();
-            if (changeBack == "y")
+            if (selection == "1" || selection == "2" || selection == "3")
             {
-                if(selection=="1")
+                if (changeBack == "y")
                 {
-                    ingredientQuantity = ingredientQuantity.Select(x => x * 2).ToList();
+                    if (selection == "1")
+                    {
+                        ingredientQuantity = ingredientQuantity.Select(x => x * 2).ToList();
+                    }
+                    else if (selection == "2")
+                    {
+                        ingredientQuantity = ingredientQuantity.Select(x => x / 2).ToList();
+                    }
+                    else if (selection == "3")
+                    {
+                        ingredientQuantity = ingredientQuantity.Select(x => x / 3).ToList();
+                    }
                 }
-                else if (selection == "2")
-                {
-                    ingredientQuantity = ingredientQuantity.Select(x => x / 2).ToList();
-                }
-                else if (selection == "3")
-                {
-                    ingredientQuantity = ingredientQuantity.Select(x => x / 3).ToList();
-                }
-            }else if (changeBack == "n")
+            }
+            else if (changeBack == "n")
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Your recipe will remain scaled", Console.ForegroundColor);
                 Console.ResetColor();
             }
-            else 
-            {                
+            else
+            {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
                 Console.ResetColor();
@@ -358,6 +452,24 @@ namespace ST10255309_PROG6221_POE.Workings
                 Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
                 Console.ResetColor();
             }
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------
+
+        //Method to display the full recipes in alphabetical order.
+        private void AlphabeticOrder()
+        {
+            
+
+            
+
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------
+
+        private void usrSearch()
+        {
+
         }
    
         //---------------------------------------------End of methods---------------------------------------------------------------
