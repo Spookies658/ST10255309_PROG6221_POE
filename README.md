@@ -15,13 +15,21 @@ Once opened, left click on the start button which is located in the middle of th
 This should run the application.
 Once the application is running, interact with it to create your recipe.
 
+The application has been updated so that the user can enter as many recipes as they wish. The update also includes a search feature.
+
 Once running, if "1" is entered, the application will allow you to enter a new recipe. It will prompt you for its name, number of ingredients, ingredient properties, number of steps and the step contents.
 Once this is completed you have an option to scale your recipes ingredient quantities. You can revert back to the recipes original quantity.
-Further updates to the application have introduced a input for calories and food groups. The user will be prompted to enter the amount of calories per ingredient aswell as the food group. The user will be notified when the total calories have exceeded 300.
+Further updates to the application have introduced a input for calories and food groups. The user will be prompted to enter the amount of calories per ingredient aswell as the food group. The user will be notified when the total calories have exceeded 300. And the total calories in the recipe will be displayed.
+Once this is completed you will be returned to the home page.
 
-If "2" is selected, the application will prompt you to either delete your created recipe or not. 
+If "2" is selected, the application will display all the recipe names in alphabetical order. The user will be able to then search for a recipe from the created recipes. The search is performed by name and if entered correctly, the program will display all the recipes details. Once this is completed you will be returned to the home page.
 
-An option is provided to exit the application once you wish to exit.
+If "3" is selected, the user will be allowed to delete a recipe. Once entering the name of a created recipe the program will delete all the contents related to that recipe.
+Once this is completed the program will return you to the home page.
+
+If "4" is selected the system will say its goodbyes and you will have exited the application.
+
+
 
 References:
 w3schools.2024. C# Try and Catch. [ONLINE] Available at: https://www.w3schools.com/cs/cs_exceptions.php. [Accessed 17 May 2021].
