@@ -321,7 +321,44 @@ namespace ST10255309_PROG6221_POE.Workings
 
         //-----------------------------------------------------------------------------------------------------------------------
 
-       
+        private void Views()
+        {
+            foreach (var recipe in recipeName)
+            {
+                Console.WriteLine("Recipe Name: " + recipe);
+            }
+            foreach (var ingredient in ingredientName)
+            {
+                Console.WriteLine("Ingredient Name: " + ingredient);
+            }
+            foreach (var quantity in ingredientQuantity)
+            {
+                Console.WriteLine("Ingredient Quantity: " + quantity);
+            }
+            foreach (var unit in measurementUnit)
+            {
+                Console.WriteLine("Measurement Unit: " + unit);
+            }
+            foreach (var calorie in calories)
+            {
+                Console.WriteLine("Calories: " + calorie);
+                if (calorie > 300)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ingredient contains more than 300 calories");
+                    Console.ResetColor();
+                }
+            }
+            foreach (var group in group)
+            {
+                Console.WriteLine("Food Group: " + group);
+            }
+            foreach (var step in stepDescription)
+            {
+                Console.WriteLine("Step Description: " + step);
+            }
+
+        }
 
         //-----------------------------------------------------------------------------------------------------------------------
 
@@ -431,7 +468,7 @@ namespace ST10255309_PROG6221_POE.Workings
             Console.ResetColor();
             foreach (var recipe in recipeName)
             {
-                Console.WriteLine(recipe);
+                Console.WriteLine("Recipe Name: " + recipe);
             }
         }
 

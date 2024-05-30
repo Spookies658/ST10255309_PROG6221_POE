@@ -16,6 +16,7 @@ namespace ST10255309_PROG6221_POE.Workings
     internal class Recipe
     {
 
+        WorkingClass workings = new WorkingClass();
         string option;
 
         //A method to display a menu popup to the user
@@ -52,7 +53,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //userRecap is called from the WorkingClass so that the user can create a recipe
         private void Create()
         {
-            WorkingClass workings = new WorkingClass();
+           
             workings.userRecp();
             Menu();
         }
@@ -60,7 +61,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //usrSearch is called from WorkingClass so that the user can search for a recipe
         private void Display()
         {
-            WorkingClass workings = new WorkingClass();
+           
             workings.Search();
             Menu();
         }
@@ -69,7 +70,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //ClearRecipe is called from the WorkingClass so that the user can delete a recipe
         private void Delete()
         {
-            WorkingClass workings = new WorkingClass();
+            
             workings.ClearRecipe();
             Menu();
         }
