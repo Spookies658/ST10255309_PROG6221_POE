@@ -17,6 +17,7 @@ Once the application is running, interact with it to create your recipe.
 
 Once running, if "1" is entered, the application will allow you to enter a new recipe. It will prompt you for its name, number of ingredients, ingredient properties, number of steps and the step contents.
 Once this is completed you have an option to scale your recipes ingredient quantities. You can revert back to the recipes original quantity.
+Further updates to the application have introduced a input for calories and food groups. The user will be prompted to enter the amount of calories per ingredient aswell as the food group. The user will be notified when the total calories have exceeded 300.
 
 If "2" is selected, the application will prompt you to either delete your created recipe or not. 
 
