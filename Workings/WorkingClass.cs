@@ -69,7 +69,10 @@ namespace ST10255309_PROG6221_POE.Workings
             usrSearch(recipeName);
         }
 
-        
+        public void Gone()
+        {
+            DeleteRecipe();
+        }
 
         
 
@@ -533,7 +536,39 @@ namespace ST10255309_PROG6221_POE.Workings
         //-----------------------------------------------------------------------------------------------------------------------
 
         // Method to prompt the user if they want to delete their recipe or not.
-       
+       private void DeleteRecipe()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Would you like to delete the recipe? y/n");
+            Console.ResetColor();
+            del = Console.ReadLine();
+            if (del == "y")
+            {
+                for (int i = 0; i < recipeName.Count; i++)
+                {
+                    recipeName.RemoveAt(i);
+                    ingredientName.RemoveAt(i);
+                    ingredientQuantity.RemoveAt(i);
+                    measurementUnit.RemoveAt(i);
+                    stepDescription.RemoveAt(i);
+                    calories.RemoveAt(i);
+                    group.RemoveAt(i);
+                }
+            }
+            else if (del == "n")
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Recipe will not be deleted");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input, please try again");
+                Console.ResetColor();
+                DeleteRecipe();
+            }
+        }
 
         //---------------------------------------------End of methods---------------------------------------------------------------
 

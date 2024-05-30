@@ -22,7 +22,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //A method to display a menu popup to the user
         public void Menu()
         {
-            Console.WriteLine("Please select an option from the menu below: \n\n1. Create Recipe\n2. Display\n3. Exit");
+            Console.WriteLine("Please select an option from the menu below: \n\n1. Create Recipe\n2. Display\n3.Delete\n4. Exit");
             option = Console.ReadLine();
             if (option == "1")
             {
@@ -34,12 +34,11 @@ namespace ST10255309_PROG6221_POE.Workings
             }
             else if (option == "3")
             {
-                Exit();
                 
             }
             else if (option == "4")
             {
-                
+                Exit();
             }
             else
             {
@@ -68,7 +67,11 @@ namespace ST10255309_PROG6221_POE.Workings
 
 
         //ClearRecipe is called from the WorkingClass so that the user can delete a recipe
-        
+        private void ClearRecipe()
+        {
+            workings.Gone();
+            Menu();
+        }
 
        
         //Method to exit the application
