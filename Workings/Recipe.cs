@@ -21,7 +21,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //A method to display a menu popup to the user
         public void Menu()
         {
-            Console.WriteLine("Please select an option from the menu below: \n\n1. Create Recipe\n2. Delete Recipe\n3. Exit");
+            Console.WriteLine("Please select an option from the menu below: \n\n1. Create Recipe\n2. Delete Recipe\n3. Display\n4. Exit");
             option = Console.ReadLine();
             if (option == "1")
             {
@@ -33,11 +33,17 @@ namespace ST10255309_PROG6221_POE.Workings
             }
             else if (option == "3")
             {
+                Display();
+            }
+            else if (option == "4")
+            {
                 Exit();
             }
             else
             {
-                Console.WriteLine("Invalid input, please try again");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                Console.ResetColor();
                 Menu();
             }
         }
@@ -63,6 +69,16 @@ namespace ST10255309_PROG6221_POE.Workings
         {
             Console.WriteLine("Thank you for using the Recipe Application");
             System.Environment.Exit(0);
+        }
+
+        private void Display()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Please see below the created recipe names: ", Console.ForegroundColor);
+            Console.ResetColor();
+            WorkingClass workings = new WorkingClass();
+            workings.Search();
+            Menu();
         }
     }
 }
