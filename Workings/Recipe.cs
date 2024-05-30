@@ -68,12 +68,7 @@ namespace ST10255309_PROG6221_POE.Workings
 
 
         //ClearRecipe is called from the WorkingClass so that the user can delete a recipe
-        private void Delete()
-        {
-            
-            workings.ClearRecipe();
-            Menu();
-        }
+        
 
        
         //Method to exit the application

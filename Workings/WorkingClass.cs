@@ -23,6 +23,7 @@ namespace ST10255309_PROG6221_POE.Workings
      * code4noobz. 2024. C# Multiply all elements in a list. [Online] Available at: https://code.4noobz.net/multiply-all-elements-from-a-list/ [Accessed 24 May 2024].
      * geeksforgeeks. 2021. C# | Delegates. [Online]. Available at: https://www.geeksforgeeks.org/c-sharp-delegates/, [Accessed 30 May 2024].
      * simplilearn. 2024. Introduction to List in C#. [Online]. Available at: https://www.simplilearn.com/tutorials/asp-dot-net-tutorial/c-sharp-list. [Accessed 30 May 2024].
+     * tutorialspoint.2020. C# Linq SUM() Method. [Online]. Available at: https://www.tutorialspoint.com/chash-linq-sum-method. [Accessed 30 May 2024].
     */
     internal class WorkingClass
     {
@@ -68,10 +69,7 @@ namespace ST10255309_PROG6221_POE.Workings
             usrSearch(recipeName);
         }
 
-        public void ClearRecipe()
-        {
-            Clear();
-        }
+        
 
         
 
@@ -321,6 +319,7 @@ namespace ST10255309_PROG6221_POE.Workings
 
         //-----------------------------------------------------------------------------------------------------------------------
 
+        //Method to display the recipe to the user.
         private void Views()
         {
             foreach (var recipe in recipeName)
@@ -348,7 +347,9 @@ namespace ST10255309_PROG6221_POE.Workings
                     Console.WriteLine("Ingredient contains more than 300 calories");
                     Console.ResetColor();
                 }
+                
             }
+            Console.WriteLine("Total calories: " + calories.Sum());
             foreach (var group in group)
             {
                 Console.WriteLine("Food Group: " + group);
@@ -506,6 +507,7 @@ namespace ST10255309_PROG6221_POE.Workings
                                 Console.WriteLine("Ingredient contains more than 300 calories");
                                 Console.ResetColor();
                             }
+                            Console.WriteLine("Total calories: " + calories.Sum());
                         }
                         foreach (var group in group)
                         {
@@ -531,41 +533,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //-----------------------------------------------------------------------------------------------------------------------
 
         // Method to prompt the user if they want to delete their recipe or not.
-        private void Clear()
-        {
-            Console.WriteLine("Please select a recipe to delete: ");
-            del = Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Are you sure you want to delete the recipe? y/n");
-            Console.ResetColor();
-            string confirm = Console.ReadLine();
-            if (confirm == "y")
-            {
-                recipeName.Remove(del);
-                ingredientName.Clear();
-                ingredientQuantity.Clear();
-                measurementUnit.Clear();
-                stepDescription.Clear();
-                calories.Clear();
-                group.Clear();
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Recipe deleted");
-                Console.ResetColor();
-            }
-            else if (confirm == "n")
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Recipe not deleted");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid input, please try again");
-                Console.ResetColor();
-                Clear();
-            }
-        }
+       
 
         //---------------------------------------------End of methods---------------------------------------------------------------
 
