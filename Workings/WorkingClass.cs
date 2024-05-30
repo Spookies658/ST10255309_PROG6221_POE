@@ -24,7 +24,8 @@ namespace ST10255309_PROG6221_POE.Workings
      * geeksforgeeks. 2021. C# | Delegates. [Online]. Available at: https://www.geeksforgeeks.org/c-sharp-delegates/, [Accessed 30 May 2024].
      * simplilearn. 2024. Introduction to List in C#. [Online]. Available at: https://www.simplilearn.com/tutorials/asp-dot-net-tutorial/c-sharp-list. [Accessed 30 May 2024].
      * tutorialspoint.2020. C# Linq SUM() Method. [Online]. Available at: https://www.tutorialspoint.com/chash-linq-sum-method. [Accessed 30 May 2024].
-    */
+     * learnMicrosft.2024. List<T>.RemoveAt(Int32) Method. [Online]. Available at: https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-8.0 [Accessed 30 May 2024]
+     */
     internal class WorkingClass
     {
         
@@ -73,8 +74,6 @@ namespace ST10255309_PROG6221_POE.Workings
         {
             DeleteRecipe();
         }
-
-        
 
         //------------------------------------------------Start of Methods-------------------------------------------------------
        
@@ -553,6 +552,9 @@ namespace ST10255309_PROG6221_POE.Workings
                     stepDescription.RemoveAt(i);
                     calories.RemoveAt(i);
                     group.RemoveAt(i);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Recipe deleted");
+                    Console.ResetColor();
                 }
             }
             else if (del == "n")
