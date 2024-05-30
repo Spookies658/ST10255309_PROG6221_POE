@@ -21,7 +21,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //A method to display a menu popup to the user
         public void Menu()
         {
-            Console.WriteLine("Please select an option from the menu below: \n\n1. Create Recipe\n2. Delete Recipe\n3. Display\n4. Exit");
+            Console.WriteLine("Please select an option from the menu below: \n\n1. Create Recipe\n2. Display\n3. Exit");
             option = Console.ReadLine();
             if (option == "1")
             {
@@ -29,20 +29,21 @@ namespace ST10255309_PROG6221_POE.Workings
             }
             else if (option == "2")
             {
-                Delete();
+                Display();
             }
             else if (option == "3")
             {
-                Display();
+                Exit();
+                
             }
             else if (option == "4")
             {
-                Exit();
+                
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid input, please try again", Console.ForegroundColor);
+                Console.WriteLine("Invalid input, please try again");
                 Console.ResetColor();
                 Menu();
             }
@@ -56,6 +57,15 @@ namespace ST10255309_PROG6221_POE.Workings
             Menu();
         }
 
+        //usrSearch is called from WorkingClass so that the user can search for a recipe
+        private void Display()
+        {
+            WorkingClass workings = new WorkingClass();
+            workings.Search();
+            Menu();
+        }
+
+
         //ClearRecipe is called from the WorkingClass so that the user can delete a recipe
         private void Delete()
         {
@@ -64,21 +74,12 @@ namespace ST10255309_PROG6221_POE.Workings
             Menu();
         }
 
+       
         //Method to exit the application
         private void Exit()
         {
             Console.WriteLine("Thank you for using the Recipe Application");
             System.Environment.Exit(0);
-        }
-
-        private void Display()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Please see below the created recipe names: ", Console.ForegroundColor);
-            Console.ResetColor();
-            WorkingClass workings = new WorkingClass();
-            workings.Search();
-            Menu();
         }
     }
 }

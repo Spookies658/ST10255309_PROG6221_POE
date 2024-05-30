@@ -15,29 +15,35 @@ namespace ST10255309_PROG6221_POE.Workings
     internal class Ingredients
     {
 
-        private string name;
+        //Creating the variables for the user input
+
+        private string recipeName;
         private int ingredient;
         private string ingredientName;
         private double ingredientQuantity;
         private string measurementUnit;
         private int numberSteps;
         private string stepDescription;
+        private double calories;
+        private string group;
+        private double quantity;
 
         //Creating getters and setters for the user input
-        public Ingredients(string name, int ingredient, string ingredientName, double ingredientQuantity, string measurementUnit, int numberSteps, string stepDescription)
+
+        public Ingredients(string recipeName, string ingredientName, string measurementUnit, double quantity, double calories, string group, string stepDescription)
         {
-            this.name = name;
-            this.ingredient = ingredient;
+            this.recipeName = recipeName;
             this.ingredientName = ingredientName;
-            this.ingredientQuantity = ingredientQuantity;
             this.measurementUnit = measurementUnit;
-            this.numberSteps = numberSteps;
+            this.quantity = quantity;
+            this.calories = calories;
+            this.group = group;
             this.stepDescription = stepDescription;
         }
 
-        public string getName()
+        public string getrecipeName()
         {
-            return name;
+            return recipeName;
         }
 
         public int getIngredient()
@@ -69,9 +75,19 @@ namespace ST10255309_PROG6221_POE.Workings
         {
             return stepDescription;
         }
-        public void setName(string name)
+
+        public double getCalories()
         {
-            this.name = name;
+            return calories;
+        }
+
+        public string getGroup()
+        {
+            return group;
+        }
+        public void setrecipeName(string recipeName)
+        {
+            this.recipeName = recipeName;
         }
 
         public void setIngredient(int ingredient)
@@ -102,6 +118,16 @@ namespace ST10255309_PROG6221_POE.Workings
         public void setStepDescription(string stepDescription)
         {
             this.stepDescription = stepDescription;
+        }
+
+        public void setCalories(double calories)
+        {
+            this.calories = calories;
+        }
+
+        public void setGroup(string group)
+        {
+            this.group = group;
         }
     }
 }
