@@ -470,6 +470,62 @@ namespace ST10255309_PROG6221_POE.Workings
             {
                 Console.WriteLine("Recipe Name: " + recipe);
             }
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Please select a recipe to view: ");
+            Console.ResetColor();
+            string view = Console.ReadLine();
+            if (recipeName.Contains(view))
+            {
+                foreach(var recipe in recipeName)
+                {
+                    if (recipe == view)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Recipe found");
+                        Console.ResetColor();
+                        Console.WriteLine("Recipe Name: " + recipe);
+                        Console.WriteLine("Ingredients: ");
+                        foreach (var ingredient in ingredientName)
+                        {
+                            Console.WriteLine("Ingredient Name: " + ingredient);
+                        }
+                        foreach (var quantity in ingredientQuantity)
+                        {
+                            Console.WriteLine("Ingredient Quantity: " + quantity);
+                        }
+                        foreach (var unit in measurementUnit)
+                        {
+                            Console.WriteLine("Measurement Unit: " + unit);
+                        }
+                        foreach (var calorie in calories)
+                        {
+                            Console.WriteLine("Calories: " + calorie);
+                            if (calorie > 300)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Ingredient contains more than 300 calories");
+                                Console.ResetColor();
+                            }
+                        }
+                        foreach (var group in group)
+                        {
+                            Console.WriteLine("Food Group: " + group);
+                        }
+                        foreach (var step in stepDescription)
+                        {
+                            Console.WriteLine("Step Description: " + step);
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Recipe not found");
+                        Console.ResetColor();
+                        usrSearch(recipeName);
+                    }
+                }
+            }
+            
         }
 
         //-----------------------------------------------------------------------------------------------------------------------
