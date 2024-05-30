@@ -26,7 +26,7 @@ namespace ST10255309_PROG6221_POE.Workings
      * tutorialspoint.2020. C# Linq SUM() Method. [Online]. Available at: https://www.tutorialspoint.com/chash-linq-sum-method. [Accessed 30 May 2024].
      * learnMicrosft.2024. List<T>.RemoveAt(Int32) Method. [Online]. Available at: https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-8.0 [Accessed 30 May 2024]
      */
-    internal class WorkingClass
+    public class WorkingClass
     {
         
         //Creating arraylists and initializing them
@@ -200,7 +200,7 @@ namespace ST10255309_PROG6221_POE.Workings
         {
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Please enter the calories of the ingredient: ");
+            Console.WriteLine($"Please enter the description of the step: ");
             Console.ResetColor();
             double calory;
             while (true)
@@ -302,7 +302,7 @@ namespace ST10255309_PROG6221_POE.Workings
            for(int i = 0; i < stepsNumber; i++)
            {
                Console.ForegroundColor = ConsoleColor.Yellow;
-               Console.WriteLine("Please enter the description of the step: ");
+               Console.WriteLine($"Please enter the description of the step {i + 1}: ");
                Console.ResetColor();
                description= Console.ReadLine();
                if(description != null)
@@ -324,6 +324,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //Method to display the recipe to the user.
         private void Views()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             foreach (var recipe in recipeName)
             {
                 Console.WriteLine("Recipe Name: " + recipe);
@@ -342,7 +343,7 @@ namespace ST10255309_PROG6221_POE.Workings
             }
             foreach (var calorie in calories)
             {
-                Console.WriteLine("Calories: " + calorie);
+                Console.WriteLine("Ingredient Calories: " + calorie);
                 if (calorie > 300)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -351,7 +352,7 @@ namespace ST10255309_PROG6221_POE.Workings
                 }
                 
             }
-            Console.WriteLine("Total calories: " + calories.Sum());
+            Console.WriteLine("Total Calories: " + calories.Sum());
             foreach (var group in group)
             {
                 Console.WriteLine("Food Group: " + group);
@@ -360,7 +361,7 @@ namespace ST10255309_PROG6221_POE.Workings
             {
                 Console.WriteLine("Step Description: " + step);
             }
-
+            Console.ResetColor();
         }
 
         //-----------------------------------------------------------------------------------------------------------------------
@@ -519,6 +520,7 @@ namespace ST10255309_PROG6221_POE.Workings
                         {
                             Console.WriteLine("Step Description: " + step);
                         }
+                        Console.ResetColor();
                     }
                     else
                     {
