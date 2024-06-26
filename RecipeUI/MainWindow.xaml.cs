@@ -157,6 +157,16 @@ namespace RecipeUI
         {
             MessageBox.Show("Recipe successfully created");
 
+            rName.Clear();
+            rIngredients.Clear();
+            rSteps.Clear();
+            IngredientsInfo.Children.Clear();
+            StepsInfo.Children.Clear();
+
+        }
+
+        private void ViewCreatedRecipe_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
