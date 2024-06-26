@@ -12,7 +12,7 @@ namespace ST10255309_PROG6221_POE.Workings
     *Group2
     *Troeleson, A. Japikse, P. 2022. Pro C# 10 with .Net 6 Foundational Principals and Practices in Programming. Chamsbersburg, PA, USA.
     */
-    public class Ingredients
+    internal class Ingredients
     {
 
         //Creating the variables for the user input
@@ -39,10 +39,6 @@ namespace ST10255309_PROG6221_POE.Workings
             this.calories = calories;
             this.group = group;
             this.stepDescription = stepDescription;
-        }
-
-        public Ingredients()
-        {
         }
 
         public string getrecipeName()
