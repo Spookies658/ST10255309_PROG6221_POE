@@ -20,6 +20,8 @@ namespace RecipeUI
      *ST10255309
      *Group2
      * References
+     * Microsoft Learn. 2024. How to add an event handler using code (WPF.Net), [Online]. Available at: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/events/how-to-add-an-event-handler-using-code?view=netdesktop-8.0 [Accessed 27 June 2024].
+     * Microsoft Learn. 2024. UIElementCollection.Clear Method,[Online]. Available at: https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.uielementcollection.clear?view=windowsdesktop-8.0 [Accessed 26 June 2024].
      * C#Corner. 2018. ScrollBar in WPF, [Online}. Available at: https://www.c-sharpcorner.com/UploadFile/mahesh/scrollbar-in-wpf/ [Accessed 26 June 2024].
      * Microsoft learn. 2023. Controls, [Online]. Available at: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/?view=netframeworkdesktop-4.8 [Accessed 26 June 2024].
      * Microsoft Learn. 2024. StackPanel Class, [Online]. Available at: https://learn.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.stackpanel?view=winrt-22621 [Accessed 26 June 2024].
@@ -28,7 +30,7 @@ namespace RecipeUI
     public partial class MainWindow : Window
     {
         private WorkingClass workingClass = new WorkingClass();
-        private List<TextBox> recName = new List<TextBox>();
+        private List<string> recName = new List<string>();
         private List<TextBox> iNameInputs = new List<TextBox>();
         private List<ComboBox> imeasurementInputs = new List<ComboBox>();
         private List<TextBox> iAmountInputs = new List<TextBox>();
@@ -52,7 +54,7 @@ namespace RecipeUI
             else
             {
                 MessageBox.Show("RecipeName successfully captured");
-                recName.Add(rName);
+                recName.Add(recipeName);
             }
 
         }
@@ -62,15 +64,16 @@ namespace RecipeUI
             
             if(int.TryParse(rIngredients.Text, out int ingredientNumber))
             {
-                
-                MessageBox.Show("Please enter the contents of each ingredient");
                 for(int i = 0; i < ingredientNumber; i++)
                 {
                     StackPanel Info = new StackPanel();
 
                     TextBlock Name = new TextBlock {Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Ingredient Name {i + 1}:"};
                     TextBox iName = new TextBox { Width=200, FontSize=15};
-                    
+                    if (string.IsNullOrEmpty(iName.Text))
+                    {
+                        MessageBox.Show("Please enter an ingredient name");
+                    }
                         iNameInputs.Add(iName);
                     
 
@@ -81,19 +84,28 @@ namespace RecipeUI
                     measurementU.Items.Add("Teaspoons");;
                     measurementU.Items.Add("Grams");
                     measurementU.Items.Add("Kilograms");
-                    
+                    if (measurementU.SelectedItem == null)
+                    {
+                        MessageBox.Show("Please select a measurement unit");
+                    }
                         imeasurementInputs.Add(measurementU);
                     
 
                     TextBlock Quantity = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Ingredient Quantity {i + 1}:"};
                     TextBox quantity = new TextBox { Width=200, FontSize=15};
-                    
+                    if(!int.TryParse(quantity.Text, out int quantityInt))
+                    {
+                        MessageBox.Show("Please enter a Ingredient quantity");
+                    }
                         iAmountInputs.Add(quantity);
                     
 
                     TextBlock Calories = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Ingredient Calories {i + 1}:"};
                     TextBox calories = new TextBox { Width=200, FontSize=15};
-                    
+                    if (!int.TryParse(calories.Text, out int caloriesInt))
+                    {
+                        MessageBox.Show("Please enter a valid number");
+                    }
                         iCaloriesInputs.Add(calories);
                     
 
@@ -104,7 +116,10 @@ namespace RecipeUI
                     group.Items.Add("Starch");
                     group.Items.Add("Protein");
                     group.Items.Add("Liquids");
-                    
+                    if (group.SelectedItem == null)
+                    {
+                        MessageBox.Show("Please select a Food group");
+                    }
                         iGroupInputs.Add(group);
                     
 
@@ -121,7 +136,10 @@ namespace RecipeUI
                     Info.Children.Add(group);
 
                     IngredientsInfo.Children.Add(Info);
+
+                   
                 }
+                    
             }
             else
             {
@@ -168,6 +186,35 @@ namespace RecipeUI
         private void ViewCreatedRecipe_Click(object sender, RoutedEventArgs e)
         {
 
+            recName.Sort();
+            foreach(string recipeName in recName)
+            {
+                StackPanel Info = new StackPanel();
+                TextBlock recipe = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Recipe Name: {recipeName}"};
+
+                Info.Children.Add(recipe);
+
+                RecipeInfo.Children.Add(Info);
+            }
+        }
+
+        private void ViewFullRecipe_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ViewDelRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            recName.Sort();
+            foreach(string recipeName in recName)
+            {
+                StackPanel Info = new StackPanel();
+                TextBlock recipe = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Recipe Name: {recipeName}"};
+
+                Info.Children.Add(recipe);
+
+                DelRecipeInfo.Children.Add(Info);
+            }
         }
     }
 }

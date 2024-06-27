@@ -20,6 +20,8 @@ namespace RecipeUI
      *ST10255309
      *Group2
      * References
+     * Microsoft Learn. 2024. Panel.Children Propert, [Online]. Available at: https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.panel.children?view=windowsdesktop-8.0 [Accessed 27 June 2024].
+     * oreilly. 2024. Checking for null. [ONLINE] Available at:https://www.oreilly.com/library/view/c-71-and/9781788398077/daa9b00f-274a-4554-8287-4c303e9d2de3.xhtml#:~:text=If%20you%20are%20trying%20to,howManyLetters%20%3D%20authorName%3F. [Accessed 27 June 2024].
      * Microsoft Learn. 2024. How to add an event handler using code (WPF.Net), [Online]. Available at: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/events/how-to-add-an-event-handler-using-code?view=netdesktop-8.0 [Accessed 27 June 2024].
      * Microsoft Learn. 2024. UIElementCollection.Clear Method,[Online]. Available at: https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.uielementcollection.clear?view=windowsdesktop-8.0 [Accessed 26 June 2024].
      * C#Corner. 2018. ScrollBar in WPF, [Online}. Available at: https://www.c-sharpcorner.com/UploadFile/mahesh/scrollbar-in-wpf/ [Accessed 26 June 2024].
@@ -43,10 +45,12 @@ namespace RecipeUI
         }
 
         
-
+        //Method which captures the recipe name after clicking the next button
         private void ContinueCreatingR_Click(object sender, RoutedEventArgs e)
         {
+            //Adding a variable to the recipe name textbox
             string recipeName = rName.Text;
+            //Checking if the recipe name is empty
             if(string.IsNullOrEmpty(recipeName))
             {
                 MessageBox.Show("Please enter a recipe name");
@@ -59,15 +63,19 @@ namespace RecipeUI
 
         }
 
+        //Method which captures the ingredients after clicking the next button, outputs the number of ingredient requirements as inputted
         private void ContinueCreating_Click(object sender, RoutedEventArgs e)
         {
             
             if(int.TryParse(rIngredients.Text, out int ingredientNumber))
             {
+                //For every number of ingredients inputted by the user, the following text blocks, text boxes and combo boxes are created
                 for(int i = 0; i < ingredientNumber; i++)
                 {
+                    //Creating a stack panel to hold the text blocks, text boxes and combo boxes
                     StackPanel Info = new StackPanel();
 
+                    //Text block, text box and checking if empty for ingredient name
                     TextBlock Name = new TextBlock {Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Ingredient Name {i + 1}:"};
                     TextBox iName = new TextBox { Width=200, FontSize=15};
                     if (string.IsNullOrEmpty(iName.Text))
@@ -76,7 +84,7 @@ namespace RecipeUI
                     }
                         iNameInputs.Add(iName);
                     
-
+                    //Text block, combo box and checking if empty for measurement unit
                     TextBlock measurement = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Ingredient Measurement {i + 1}:"};
                     ComboBox measurementU = new ComboBox { Width=200, FontSize=15};
                     measurementU.Items.Add("Cups");
@@ -90,7 +98,7 @@ namespace RecipeUI
                     }
                         imeasurementInputs.Add(measurementU);
                     
-
+                    //Text block, text box and checking if empty/not an int for ingredient quantity
                     TextBlock Quantity = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Ingredient Quantity {i + 1}:"};
                     TextBox quantity = new TextBox { Width=200, FontSize=15};
                     if(!int.TryParse(quantity.Text, out int quantityInt))
@@ -99,7 +107,7 @@ namespace RecipeUI
                     }
                         iAmountInputs.Add(quantity);
                     
-
+                    //Text block, text box and checking if empty/not an int for ingredient calories
                     TextBlock Calories = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Ingredient Calories {i + 1}:"};
                     TextBox calories = new TextBox { Width=200, FontSize=15};
                     if (!int.TryParse(calories.Text, out int caloriesInt))
@@ -108,7 +116,7 @@ namespace RecipeUI
                     }
                         iCaloriesInputs.Add(calories);
                     
-
+                    //Text block, combo box and checking if empty for ingredient group
                     TextBlock Group = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Ingredient Group {i + 1}:"};
                     ComboBox group = new ComboBox { Width=200, FontSize=15};
                     group.Items.Add("Dairy");
@@ -123,7 +131,7 @@ namespace RecipeUI
                         iGroupInputs.Add(group);
                     
 
-
+                    //Adding each method to the created stackpanel in the .xaml.cs file
                     Info.Children.Add(Name);
                     Info.Children.Add(iName);
                     Info.Children.Add(measurement);
@@ -135,6 +143,7 @@ namespace RecipeUI
                     Info.Children.Add(Group);
                     Info.Children.Add(group);
 
+                    //Adding the created stackpanel in .xaml.cs to the ingredientsinfo stackpanel in the .xaml file so that they can be outputted
                     IngredientsInfo.Children.Add(Info);
 
                    
@@ -147,20 +156,26 @@ namespace RecipeUI
             }
         }
 
+        //Method which captures the steps after clicking the next button 
         private void ContinueSteps_Click(object sender, RoutedEventArgs e)
         {
+            //Checking if the number of steps is an integer
             if(int.TryParse(rSteps.Text, out int stepNumber))
             {
+                //For every number of steps inputted by the user, the following text blocks and text boxes are created
                 MessageBox.Show("Please enter the contents of each step");
                 for(int i = 0; i < stepNumber; i++)
                 {
+                    //Creating a stack panel to hold the text blocks and text boxes
                     StackPanel Info = new StackPanel();
 
+                    //Text block and text box for each step
                     TextBlock Step = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Step {i + 1}:"};
                     TextBox step = new TextBox { Width=200, FontSize=15};
+                    //Adding each method to the created stackpanel in the .xaml.cs file
                     Info.Children.Add(Step);
                     Info.Children.Add(step);
-
+                    //Adding the created stackpanel in .xaml.cs to the stepsinfo stackpanel in the .xaml file so that they can be outputted
                     StepsInfo.Children.Add(Info);
 
                     iStepInputs.Add(step);
@@ -171,6 +186,8 @@ namespace RecipeUI
                 MessageBox.Show("Please enter a valid number");
             }
         }
+
+        //Method which creates the recipe after clicking the create recipe button and removes all resets the page to its original form
         private void CreateRecipe_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Recipe successfully created");
@@ -183,14 +200,16 @@ namespace RecipeUI
 
         }
 
+        //Method which outputs the all recipe names in alphabetical order after clicking the view created recipe button
         private void ViewCreatedRecipe_Click(object sender, RoutedEventArgs e)
         {
-
+            //Sorts the recipe names in alphabetical order
             recName.Sort();
+            //For every recipe name in the list of recipe names, the following text blocks are created
             foreach(string recipeName in recName)
             {
                 StackPanel Info = new StackPanel();
-                TextBlock recipe = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Recipe Name: {recipeName}"};
+                TextBlock recipe = new TextBlock { Width=900, FontSize=15, Margin= new Thickness(10), Text=$"Recipe Name: {recipeName}"};
 
                 Info.Children.Add(recipe);
 
@@ -198,23 +217,25 @@ namespace RecipeUI
             }
         }
 
-        private void ViewFullRecipe_Click(object sender, RoutedEventArgs e)
-        {
+        
 
-        }
-
+        //Method which outputs the all recipe names in alphabetical order after clicking the view created recipe button
         private void ViewDelRecipe_Click(object sender, RoutedEventArgs e)
         {
             recName.Sort();
+            //For every recipe name in the list of recipe names, the following text blocks are created
             foreach(string recipeName in recName)
             {
                 StackPanel Info = new StackPanel();
-                TextBlock recipe = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Recipe Name: {recipeName}"};
+                TextBlock recipe = new TextBlock { Width=900, FontSize=15, Margin= new Thickness(10), Text=$"Recipe Name: {recipeName}"};
 
                 Info.Children.Add(recipe);
 
                 DelRecipeInfo.Children.Add(Info);
             }
         }
+
+          
+        
     }
 }
