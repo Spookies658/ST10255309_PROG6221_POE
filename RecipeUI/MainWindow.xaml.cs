@@ -203,6 +203,7 @@ namespace RecipeUI
         //Method which outputs the all recipe names in alphabetical order after clicking the view created recipe button
         private void ViewCreatedRecipe_Click(object sender, RoutedEventArgs e)
         {
+            RecipeInfo.Children.Clear();
             //Sorts the recipe names in alphabetical order
             recName.Sort();
             //For every recipe name in the list of recipe names, the following text blocks are created
@@ -215,6 +216,7 @@ namespace RecipeUI
 
                 RecipeInfo.Children.Add(Info);
             }
+
         }
 
         //Method which outputs the full recipe after clicking the view full recipe button, the name that the user entered is outputted.
@@ -262,6 +264,7 @@ namespace RecipeUI
         //Method which outputs the all recipe names in alphabetical order after clicking the view created recipe button
         private void ViewDelRecipe_Click(object sender, RoutedEventArgs e)
         {
+            DelRecipeInfo.Children.Clear();
             recName.Sort();
             //For every recipe name in the list of recipe names, the following text blocks are created
             foreach (string recipeName in recName)
