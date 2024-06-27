@@ -20,6 +20,7 @@ namespace RecipeUI
      *ST10255309
      *Group2
      * References
+     * Microsoft Learn. 2024. UIElementCollection.Clear Method,[Online]. Available at: https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.uielementcollection.clear?view=windowsdesktop-8.0 [Accessed 26 June 2024].
      * C#Corner. 2018. ScrollBar in WPF, [Online}. Available at: https://www.c-sharpcorner.com/UploadFile/mahesh/scrollbar-in-wpf/ [Accessed 26 June 2024].
      * Microsoft learn. 2023. Controls, [Online]. Available at: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/?view=netframeworkdesktop-4.8 [Accessed 26 June 2024].
      * Microsoft Learn. 2024. StackPanel Class, [Online]. Available at: https://learn.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.stackpanel?view=winrt-22621 [Accessed 26 June 2024].
@@ -28,7 +29,7 @@ namespace RecipeUI
     public partial class MainWindow : Window
     {
         private WorkingClass workingClass = new WorkingClass();
-        private List<TextBox> recName = new List<TextBox>();
+        private List<string> recName = new List<string>();
         private List<TextBox> iNameInputs = new List<TextBox>();
         private List<ComboBox> imeasurementInputs = new List<ComboBox>();
         private List<TextBox> iAmountInputs = new List<TextBox>();
@@ -52,7 +53,7 @@ namespace RecipeUI
             else
             {
                 MessageBox.Show("RecipeName successfully captured");
-                recName.Add(rName);
+                recName.Add(recipeName);
             }
 
         }
@@ -62,6 +63,7 @@ namespace RecipeUI
             
             if(int.TryParse(rIngredients.Text, out int ingredientNumber))
             {
+
                 
                 MessageBox.Show("Please enter the contents of each ingredient");
                 for(int i = 0; i < ingredientNumber; i++)
@@ -121,7 +123,10 @@ namespace RecipeUI
                     Info.Children.Add(group);
 
                     IngredientsInfo.Children.Add(Info);
+
+                   
                 }
+                    
             }
             else
             {
@@ -168,6 +173,35 @@ namespace RecipeUI
         private void ViewCreatedRecipe_Click(object sender, RoutedEventArgs e)
         {
 
+            recName.Sort();
+            foreach(string recipeName in recName)
+            {
+                StackPanel Info = new StackPanel();
+                TextBlock recipe = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Recipe Name: {recipeName}"};
+
+                Info.Children.Add(recipe);
+
+                RecipeInfo.Children.Add(Info);
+            }
+        }
+
+        private void ViewFullRecipe_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ViewDelRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            recName.Sort();
+            foreach(string recipeName in recName)
+            {
+                StackPanel Info = new StackPanel();
+                TextBlock recipe = new TextBlock { Width=200, FontSize=15, Margin= new Thickness(10), Text=$"Recipe Name: {recipeName}"};
+
+                Info.Children.Add(recipe);
+
+                DelRecipeInfo.Children.Add(Info);
+            }
         }
     }
 }

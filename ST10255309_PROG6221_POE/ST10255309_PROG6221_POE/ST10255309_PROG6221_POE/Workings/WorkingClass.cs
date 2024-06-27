@@ -48,7 +48,6 @@ namespace ST10255309_PROG6221_POE.Workings
         private string selection;
         private string changeBack;
         private string del;
-        private delegate double InputCalories();
         
         public void userRecp()
         {
@@ -57,7 +56,7 @@ namespace ST10255309_PROG6221_POE.Workings
             IngredientPropertiesName();
             IngredientPropertiesMeasurement();
             QuantityIngredients();
-            Calories(CaptureCalories);
+            CaptureCalories();
             FoodGroup();
             OrderSteps();
             StepDescription();
@@ -196,39 +195,32 @@ namespace ST10255309_PROG6221_POE.Workings
 
         //-----------------------------------------------------------------------------------------------------------------------
 
-        private double CaptureCalories()
+        private void CaptureCalories()
         {
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Please enter the description of the step: ");
-            Console.ResetColor();
-            double calory;
-            while (true)
-            {
-                try
+            for (int i = 0; i < ingredientNumber; i++) { 
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"Please enter the number of calories for ingredient {i + 1}: ");
+                Console.ResetColor();
+                while (true)
                 {
-                    calory = Convert.ToDouble(Console.ReadLine());
-                    break;
+                    try
+                    {
+                        calories.Add(Convert.ToDouble(Console.ReadLine()));
+                        break;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Invalid input, please enter a valid integer");
+                        Console.ResetColor();
+                        CaptureCalories();
+                    }
                 }
-                catch (Exception e)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Invalid input, please enter a valid integer");
-                    Console.ResetColor();
-                    CaptureCalories();
-                }
-
+                  
             }
-            return calory;
+            
         }
 
-        private void Calories(InputCalories inputCalories)
-        {
-            for (int i = 0; i < ingredientNumber; i++)
-            {
-                    calories.Add(inputCalories());
-            }
-        }
 
         //-----------------------------------------------------------------------------------------------------------------------
 
@@ -324,7 +316,7 @@ namespace ST10255309_PROG6221_POE.Workings
         //Method to display the recipe to the user.
         private void Views()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Blue;
             foreach (var recipe in recipeName)
             {
                 Console.WriteLine("Recipe Name: " + recipe);
@@ -341,18 +333,28 @@ namespace ST10255309_PROG6221_POE.Workings
             {
                 Console.WriteLine("Measurement Unit: " + unit);
             }
-            foreach (var calorie in calories)
+            foreach (var calory in calories)
             {
-                Console.WriteLine("Ingredient Calories: " + calorie);
-                if (calorie > 300)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ingredient contains more than 300 calories");
-                    Console.ResetColor();
-                }
-                
+                Console.WriteLine("Ingredient Calories: " + calory);
+                  
             }
             Console.WriteLine("Total Calories: " + calories.Sum());
+                if (calories.Sum() > 500)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("This recipe is high in calories");
+                    Console.ResetColor();
+                }else if(calories.Sum() < 200)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("This recipe is low in calories");
+                    Console.ResetColor();
+                }else if(calories.Sum() > 200 && calories.Sum() < 500)
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("This recipe is moderate in calories");
+                    Console.ResetColor();
+                }
             foreach (var group in group)
             {
                 Console.WriteLine("Food Group: " + group);
@@ -503,15 +505,27 @@ namespace ST10255309_PROG6221_POE.Workings
                         }
                         foreach (var calorie in calories)
                         {
-                            Console.WriteLine("Calories: " + calorie);
-                            if (calorie > 300)
+                            Console.WriteLine("Calories: " + calorie);   
+                        }
+                            Console.WriteLine("Total calories: " + calories.Sum());
+                            if (calories.Sum() > 500)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Ingredient contains more than 300 calories");
+                                Console.WriteLine("This recipe is high in calories");
                                 Console.ResetColor();
                             }
-                            Console.WriteLine("Total calories: " + calories.Sum());
-                        }
+                            else if (calories.Sum() < 200)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("This recipe is low in calories");
+                                Console.ResetColor();
+                            }
+                            else if (calories.Sum() > 200 && calories.Sum() < 500)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.WriteLine("This recipe is moderate in calories");
+                                Console.ResetColor();
+                            }
                         foreach (var group in group)
                         {
                             Console.WriteLine("Food Group: " + group);

@@ -8,22 +8,22 @@
         Title="Saneles Recipes" Height="1000"  Width="1000">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-          <TabControl x:Name="ControlTab">
-            
-            <TabItem Header="Create Recipe">
-               
-                <StackPanel Background="Aqua" Height="1000">
-                    <TextBlock Text="Recipe Name:" Width="200" FontSize="15" Margin="10"/>
-                    <TextBox x:Name="rName" Width="200"/>
-                    
-                    <Button Content="Continue" Width="200" Margin="5" Click="ContinueCreatingR_Click"/>
+            <TabControl x:Name="ControlTab">
 
-                    <TextBlock Text="Number of Ingredients:" Width="200" FontSize="15" Margin="10"/>
-                    <TextBox x:Name="rIngredients" Width="200"/>
+                <TabItem Header="Create Recipe">
 
-                    <Button Content="Continue" Width="200" Margin="5" Click="ContinueCreating_Click"/>
+                    <StackPanel Background="Aqua" Height="1000">
+                        <TextBlock Text="Recipe Name:" Width="200" FontSize="15" Margin="10"/>
+                        <TextBox x:Name="rName" Width="200"/>
 
-                    <StackPanel x:Name="IngredientsInfo" Orientation="Horizontal" Width="950" Margin="10"/>
+                        <Button Content="Continue" Width="200" Margin="5" Click="ContinueCreatingR_Click"/>
+
+                        <TextBlock Text="Number of Ingredients:" Width="200" FontSize="15" Margin="10"/>
+                        <TextBox x:Name="rIngredients" Width="200"/>
+
+                        <Button Content="Continue" Width="200" Margin="5" Click="ContinueCreating_Click"/>
+
+                        <StackPanel x:Name="IngredientsInfo" Orientation="Horizontal" Width="950" Margin="10"/>
 
                         <TextBlock Text="Number of steps:" Width="200" FontSize="15" Margin="5" />
                         <TextBox x:Name="rSteps" Width="200"/>
@@ -34,23 +34,29 @@
 
                         <Button Content="Create Recipe" Width="200" Margin="10" Click="CreateRecipe_Click" />
 
-                </StackPanel>
-                
-            </TabItem>
+                    </StackPanel>
 
-            <TabItem Header="View Recipes">
-                
-            </TabItem>
+                </TabItem>
 
-            <TabItem Header="Delete Recipes">
-                
-            </TabItem>
+                <TabItem Header="View Recipes">
+                    <StackPanel Background="Beige"  Height="1000">
+                        <TextBlock Text="Created Recipes" HorizontalAlignment="Left" FontSize="30" Width="250" Margin="10"/>
+                        <TextBlock Text="See below the names of the created recipes in alphabetical order:" HorizontalAlignment="Left" FontSize="20" Width="600" Margin="10"/>
+                    </StackPanel>
+                </TabItem>
 
-            <TabItem Header="Filter Recipes">
-                
-            </TabItem>
-            
-          </TabControl>
+                <TabItem Header="Delete Recipes">
+                    <StackPanel Background="Cornsilk" Height="1000">
+                        <TextBlock Text="Delete Recipes" HorizontalAlignment="Left" FontSize="30" Width="200" Margin="10"/>
+                        <TextBlock Text="See below the names of the created recipes in alphabetical order:" HorizontalAlignment="Left" FontSize="20" Width="600" Margin="10"/>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem Header="Filter Recipes">
+
+                </TabItem>
+
+            </TabControl>
         </ScrollViewer>
     </Grid>
 </Window>
