@@ -30,13 +30,13 @@ namespace ST10255309_PROG6221_POE.Workings
     {
         
         //Creating arraylists and initializing them
-        private List<string> recipeName = new List<string>();
-        private List<string> ingredientName = new List<string>();
-        private List<double> ingredientQuantity = new List<double>();
-        private List<string> measurementUnit = new List<string>();
-        private List<string> stepDescription = new List<string>();
-        private List<double> calories = new List<double>();
-        private List<string> group = new List<string>();
+        public List<string> recipeName = new List<string>();
+        public List<string> ingredientName = new List<string>();
+        public List<double> ingredientQuantity = new List<double>();
+        public List<string> measurementUnit = new List<string>();
+        public List<string> stepDescription = new List<string>();
+        public List<double> calories = new List<double>();
+        public List<string> group = new List<string>();
 
         
         private string name;
