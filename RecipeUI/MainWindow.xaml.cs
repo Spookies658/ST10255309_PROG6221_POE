@@ -300,5 +300,20 @@ namespace RecipeUI
 
             }
         }
+
+        private void FilterName_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FilterGroup_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FilterCalories_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
