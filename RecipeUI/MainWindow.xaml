@@ -97,8 +97,6 @@
 
                         </StackPanel>
 
-                        <StackPanel x:Name="FilteringFields" Orientation="Vertical" HorizontalAlignment="Center" Width="950" Margin="10"/>
-
                     </StackPanel>
                 </TabItem>
 

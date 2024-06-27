@@ -301,19 +301,55 @@ namespace RecipeUI
             }
         }
 
+        //Method which outputs the all recipe names which contain the selected ingredient
         private void FilterName_Click(object sender, RoutedEventArgs e)
         {
+            string filterName = FilterIngredient.Text;
+            //Checking if the filter name is empty
+            if (string.IsNullOrEmpty(filterName))
+            {
+                MessageBox.Show("Please enter an ingredient name");
+            }
+            //If the filter name is found, the recipe name is outputted 
+            if (recName.Contains(filterName))
+            {
+                MessageBox.Show($"Recipe Name: {filterName}");
+            }
 
+            
         }
 
+        //Method which outputs the all recipe names which contain the selected food group
         private void FilterGroup_Click(object sender, RoutedEventArgs e)
         {
-
+            object filterGroup = FilterGroup.SelectedItem;
+            //Checking if the filter group is empty
+            if (filterGroup == null)
+            {
+                MessageBox.Show("Please select a food group");
+            }
+            //If the filter group is found, the recipe name is outputted
+            if (recName.Contains(filterGroup.ToString()))
+            {
+                MessageBox.Show($"Recipe Name: {filterGroup}");
+            }
+            
         }
 
+        //Method which outputs the all recipe names which contain the selected calorie range
         private void FilterCalories_Click(object sender, RoutedEventArgs e)
         {
-
+            string filterCalories = FilterCalories.Text;
+            //Checking if the filter calories is empty
+            if (string.IsNullOrEmpty(filterCalories))
+            {
+                MessageBox.Show("Please enter a calorie range");
+            }
+            //If the filter calories are more than the inputted calories, the recipe name is outputted
+            if (recName.Contains(filterCalories))
+            {
+                MessageBox.Show($"Recipe Name: {filterCalories}");
+            }
         }
     }
 }
