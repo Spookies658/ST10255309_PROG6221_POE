@@ -42,11 +42,12 @@
                     <StackPanel Background="Beige"  Height="1000">
                         <TextBlock Text="Created Recipes" HorizontalAlignment="Left" FontSize="30" Width="250" Margin="10"/>
                         <Button Content="See below the names of the created recipes in alphabetical order:" HorizontalAlignment="Left" FontSize="20" Width="600" Margin="10" Click="ViewCreatedRecipe_Click"/>
-
-                        <StackPanel x:Name="RecipeInfo" Orientation="Horizontal" Width="950" Margin="10"/>
+                        <TextBlock Text="Recipes:" HorizontalAlignment="Left" FontSize="20" Width="600" Margin="10"/>
+                        
+                        <StackPanel x:Name="RecipeInfo" Orientation="Horizontal" HorizontalAlignment="Left" Width="950"/>
 
                         <TextBlock Text="Enter the name of a recipe you wish to see:" HorizontalAlignment="Left" FontSize="15" Width="400" Margin="10"/>
-                        <TextBox x:Name="RecipeName" Width="200" HorizontalAlignment="Left" Margin="7"/>
+                        <TextBox x:Name="VRecipeName" Width="200" HorizontalAlignment="Left" Margin="7"/>
                         <Button Content="View" FontSize="15" Width="200" HorizontalAlignment="Left" Margin="7" Click="ViewFullRecipe_Click"/>
 
                     </StackPanel>
@@ -56,9 +57,13 @@
                     <StackPanel Background="Cornsilk" Height="1000">
                         <TextBlock Text="Delete Recipes" HorizontalAlignment="Left" FontSize="30" Width="200" Margin="10"/>
                         <Button Content="See below the names of the created recipes in alphabetical order" HorizontalAlignment="Left" FontSize="20" Width="600" Margin="10" Click="ViewDelRecipe_Click"/>
-                        <StackPanel x:Name="DelRecipeInfo" Orientation="Horizontal" Width="950" Margin="10"/>
+                        <TextBlock Text="Recipes:" HorizontalAlignment="Left" FontSize="20" Width="600" Margin="10"/>
+                        
+                        <StackPanel x:Name="DelRecipeInfo" Orientation="Horizontal" HorizontalAlignment="Left" Width="950"/>
 
-                        <TextBlock Text="Click the button next to the name of a recipe if you wish to delete it" HorizontalAlignment="Left" FontSize="15" Width="600" Margin="10"/>
+                        <TextBlock Text="Enter the name of a recipe you wish to delete" HorizontalAlignment="Left" FontSize="15" Width="400" Margin="10"/>
+                        <TextBox x:Name="DelRecipeName" Width="200" HorizontalAlignment="Left" Margin="7"/>
+                        <Button Content="Delete" FontSize="15" Width="200" HorizontalAlignment="Left" Margin="7" Click="DeleteRecipe_Click"/>
                     </StackPanel>
                 </TabItem>
 

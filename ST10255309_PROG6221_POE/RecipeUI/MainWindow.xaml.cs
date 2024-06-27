@@ -217,7 +217,47 @@ namespace RecipeUI
             }
         }
 
-        
+        //Method which outputs the full recipe after clicking the view full recipe button, the name that the user entered is outputted.
+        private void ViewFullRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            //Creating a variable for the recipe name that the user wants to view
+            string viewR = VRecipeName.Text;
+            //Checking if the recipe name is empty
+            if (string.IsNullOrEmpty(viewR))
+            {
+                MessageBox.Show("Recipe name not found");
+            }
+            //If the recipe name is found, the recipe name is outputted along with all of its contents
+            if (recName.Contains(viewR))
+            {
+                MessageBox.Show($"Recipe Name: {viewR}");
+                foreach (TextBox iName in iNameInputs)
+                {
+                    MessageBox.Show($"Ingredient Name: {iName.Text}");
+                }
+                foreach (ComboBox imeasurement in imeasurementInputs)
+                {
+                    MessageBox.Show($"Measurement Unit: {imeasurement.SelectedItem}");
+                }
+                foreach (TextBox iAmount in iAmountInputs)
+                {
+                    MessageBox.Show($"Ingredient Quantity: {iAmount.Text}");
+                }
+                foreach (TextBox iCalories in iCaloriesInputs)
+                {
+                    MessageBox.Show($"Ingredient Calories: {iCalories.Text}");
+                }
+                foreach (ComboBox iGroup in iGroupInputs)
+                {
+                    MessageBox.Show($"Ingredient Group: {iGroup.SelectedItem}");
+                }
+                foreach (TextBox iStep in iStepInputs)
+                {
+                    MessageBox.Show($"Step: {iStep.Text}");
+                }
+            }
+
+        }
 
         //Method which outputs the all recipe names in alphabetical order after clicking the view created recipe button
         private void ViewDelRecipe_Click(object sender, RoutedEventArgs e)
