@@ -3,7 +3,7 @@ Sanele’s Recipe application
 Download Visual Studios 2022.
 
 If you recieve the code via zip file: Once the file containing the code is received, unzip it.
-Once unzipped, open the file.
+Once unzipped, open the file by right clicking on the solution and opening it using Visual Studios.
 
 Or you can access the github repository at: https://github.com/Spookies658/ST10255309_PROG6221_POE/tree/13e17893546399a24cf489c47eb54911b1f60179/ST10255309_PROG6221_POE 
 To access it on Visual Studios 2022, clone the repository to your local machine using: git clone
@@ -11,6 +11,7 @@ To access it on Visual Studios 2022, clone the repository to your local machine 
 Launch Visual Studios 2022.
 Compile the code on the application using a Console .NET application.
 This should open the file on Visual Studios 2022.
+If you wish to run the Console application within the solution, make sure the Project name next to start is: ST10255309_PROG6221_POE
 Once opened, left click on the start button which is located in the middle of the top taskbar. It has a green arrow next to it.
 This should run the application.
 Once the application is running, interact with it to create your recipe.
@@ -29,6 +30,28 @@ Once this is completed the program will return you to the home page.
 
 If "4" is selected the system will say its goodbyes and you will have exited the application.
 
+If you wish to run the WPF application, ensure the the Project name next to start is: RecipeUI.
+When you have changed this, you may left click on Start.
+
+The application will begin to run.
+
+You will find yourself on the Create Recipe page and may begin creating your recipe.
+You are first asked to provide the name of your recipe. Once completed click continue. Following that you now need to enter how many ingredients are in your application. After you have entered an integer, click continue.
+Multiple prompts will appear, Firstly asking for the name of your ingredient, then a selection of the measurement unit, then the total quantity for that ingredient, then the ingredients calories and finally a food group to which that ingredient belongs to.
+Once you have completed that, you now need to enter an integer for the amount of steps is required to create your recipe. and click continue. Complete the various steps once you have completed these steps click create recipe.
+Your recipe has been successfuly created. 
+
+Now you may access the tab items.
+
+To view recipes, click on View Recipes. Click the "See below names of the created recipes in aslphabetical order" button to view all your created recipes in alphabetical order. If you wish to see the contents within a specific recipe, enter the name of that recipe within the text box below. Click on "View" and you will be able to view the contents within that recipe.
+
+To delete recipes, click on the Delete Recipes Tab item. Click the "See below names of the created recipes in aslphabetical order" button to view all your created recipes. From those recipes if you wish to delete one of them enter the name of the recipe in the text box below and click on Delete. Your entered recipe and its contents will be deleted.
+
+To filter recipes, click on the Filter Recipes Tab item. You may filter recipes by entering an ingredient name, the maximum number of calories or choosing a food group. You may do all 3 or 1, it is up to you how many you wish to do. Once you have successfuly entered/chosen, you can click filter and a list of all the recipe names will appear.
+
+To navigate the application make use of the various headings in the tab bar, you can easily click on them to navigate between pages.
+
+To exit the application, click the x in the top right hand corner.
 
 
 References:
